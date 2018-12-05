@@ -2,15 +2,17 @@
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
+          <a class="navbar-brand" [routerLink]="['/home']" 
+    [routerLinkActive]="['active']"
+    [routerLinkActiveOptions]="{ exact: true }">Home</a>
+       <div id="navbarToggleRight">
         <button type="button" class="navbar-toggle collapsed" (click)="isCollapsed = !isCollapsed" aria-expanded="false">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" [routerLink]="['/home']" 
-    [routerLinkActive]="['active']"
-    [routerLinkActiveOptions]="{ exact: true }">Home</a>
+        </div>
       </div>
   
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -45,10 +47,10 @@
                 [routerLinkActiveOptions]="{ exact: true }">Login</a></li>
 
 
-            <li class="dropdown" dropdown>
-                <a href="javascript:void(0)" dropdownToggle class="dropdown-toggle">Authenticated <span class="caret"></span></a>
+            <li *ngIf = "authenticatedName" class="dropdown" dropdown>
+                <a href="javascript:void(0)" dropdownToggle class="dropdown-toggle">{{authenticatedName}}<span class="caret"></span></a>
                  <ul *dropdownMenu class="dropdown-menu" role="menu">
-                   <li><a class="btn btn-warning" href="#">Logout</a></li>
+                   <li><button (click) = "logout()" class="btn btn-warning">Logout({{authenticatedName}})</button></li>
                  </ul>
                </li>
                 
