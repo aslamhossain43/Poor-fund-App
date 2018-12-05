@@ -8,20 +8,25 @@ import { ContactComponent } from './contact/contact.component';
 import { ManageComponent } from './manage/manage.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
-const routes: Routes = [
+import { AuthGuard } from './auth.service';
+import { MembersComponent } from './members/members.component';
+import { ModuleWithProviders } from '@angular/core';
+import { EmailComponent } from './email/email.component';
+export const router: Routes = [
  {path: '', redirectTo: 'login', pathMatch: 'full'},
-  {path: 'home', component: HomeComponent},
+ {path: 'login', component: LoginComponent},
+ { path: 'login-email', component: EmailComponent },
+  {path: 'home', component: HomeComponent },
   {path: 'about', component: AboutComponent},
   {path: 'donors', component: DonorsComponent},
   {path: 'consumers', component: ConsumersComponent},
   {path: 'contact', component: ContactComponent},
-  {path: 'manage', component: ManageComponent},
-  {path: 'signup', component: SignupComponent},
-  {path: 'login', component: LoginComponent}
+  {path: 'manage', component: ManageComponent, canActivate: [AuthGuard]},
+ {path: 'members', component: MembersComponent, canActivate: [AuthGuard]},
+  {path: 'signup', component: SignupComponent}
 ];
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }
+export const routes: ModuleWithProviders = RouterModule.forRoot(router);
+
+
+

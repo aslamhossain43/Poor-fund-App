@@ -1,7 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
@@ -15,7 +13,16 @@ import { SignupComponent } from './signup/signup.component';
 import { EmailComponent } from './email/email.component';
 // FOR bootstrap
 import { AppBootstrapModule } from './app-bootstrap.module';
-
+// AUTHENTICATION
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
+import { AuthGuard } from './auth.service';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { routes } from './app.routes';
+import { MembersComponent } from './members/members.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,15 +35,22 @@ import { AppBootstrapModule } from './app-bootstrap.module';
     NavComponent,
     LoginComponent,
     SignupComponent,
-    EmailComponent
+    EmailComponent,
+    MembersComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    // FOR BOOTSTRAP
-     AppBootstrapModule
+        // FOR BOOTSTRAP
+     AppBootstrapModule,
+     // FOR AUTHENTICATION
+     BrowserAnimationsModule,
+     FormsModule,
+     HttpModule,
+     AngularFireModule.initializeApp(environment.firebase),
+     routes
+
   ],
-  providers: [],
+  providers: [AuthGuard, AngularFireAuth],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
