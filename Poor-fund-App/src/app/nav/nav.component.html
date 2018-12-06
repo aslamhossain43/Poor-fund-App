@@ -42,7 +42,7 @@
                 [routerLinkActive]="['active']"
                 [routerLinkActiveOptions]="{ exact: true }">Sign up</a></li>
                    
-            <li><a [routerLink]="['/login']" 
+            <li *ngIf="!authenticatedName" ><a [routerLink]="['/login']" 
                 [routerLinkActive]="['active']"
                 [routerLinkActiveOptions]="{ exact: true }">Login</a></li>
 
