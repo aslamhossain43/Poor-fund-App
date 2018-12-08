@@ -3,12 +3,88 @@
     <div class="col-ms-10 col-ms-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
     <h2>consumers page works</h2>
     
-<label class="btn btn-default">
-  <input type="file" (change)="selectFile($event)">
-</label>
- 
-<button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
+    <form class="form-horizontal">
+    <div class="form-group">
+      <label class="control-label col-sm-3" for="piFile">Select your image:</label>
+      <div class="col-sm-6">
+        <input type="file" class="form-control" id="piFile"  (change)="selectpiFile($event)">
+      </div>
     </div>
+    <div class="form-group">
+      <label class="control-label col-sm-3" for="apiFile">Select signature image:</label>
+      <div class="col-sm-6">
+        <input type="file" class="form-control" id="apiFile"  (change)="selectapiFile($event)">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-3" for="name">Name:</label>
+      <div class="col-sm-6"> 
+        <input type="taxt" class="form-control" id="name"  [(ngModel)]="consumer.name" name="name" placeholder="Enter your name">
+      </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-sm-3" for="country">Country:</label>
+        <div class="col-sm-6"> 
+          <input type="taxt" class="form-control" id="country"  [(ngModel)]="consumer.country" name="country" placeholder="Enter your country">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-3" for="zila">Zila:</label>
+        <div class="col-sm-6"> 
+          <input type="taxt" class="form-control" id="zila"  [(ngModel)]="consumer.zila" name="zila" placeholder="Enter your zila">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-3" for="upozila">Upozila:</label>
+        <div class="col-sm-6"> 
+          <input type="taxt" class="form-control" id="upozila"  [(ngModel)]="consumer.upozila" name="upozila" placeholder="Enter your upozila">
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label class="control-label col-sm-3" for="union">Union:</label>
+        <div class="col-sm-6"> 
+          <input type="taxt" class="form-control" id="union"  [(ngModel)]="consumer.union" name="union" placeholder="Enter your union">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-3" for="work">Work:</label>
+        <div class="col-sm-6"> 
+          <input type="taxt" class="form-control" id="work"  [(ngModel)]="consumer.work" name="work" placeholder="Enter your work">
+        </div>
+      </div>
+
+
+
+      <div class="form-group">
+        <label class="control-label col-sm-3" for="contact">Contact:</label>
+        <div class="col-sm-6"> 
+          <input type="taxt" class="form-control" id="contact"  [(ngModel)]="consumer.contact" name="contact" placeholder="Enter your contact number">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-3" for="bkash">BKash:</label>
+        <div class="col-sm-6"> 
+          <input type="taxt" class="form-control" id="bkash"  [(ngModel)]="consumer.bkash" name="bkash" placeholder="Enter your bkash/rocket numer">
+        </div>
+      </div>
+
+
+
+    <div class="form-group"> 
+      <div class="col-sm-offset-5 col-sm-2">
+        <button class="btn btn-success"  (click)="addConsumers()" [disabled]="!selectedpiFiles" [disabled]="!selectedapiFiles" (click)="uploadFile()">Submit</button>
+      </div>
+    </div>
+  </form>
+
+  </div>
     </div>
     </div>
     
