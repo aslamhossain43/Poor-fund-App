@@ -23,6 +23,9 @@ import { AuthGuard } from './auth.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { routes } from './app.routes';
 import { MembersComponent } from './members/members.component';
+// FOR FILE UPLOAD
+import { HttpClientModule } from '@angular/common/http';
+import { UploadFileService } from './consumers/consumers.upload.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,10 +50,12 @@ import { MembersComponent } from './members/members.component';
      FormsModule,
      HttpModule,
      AngularFireModule.initializeApp(environment.firebase),
-     routes
+     routes,
+     // FOR FILE UPLOAD
+     HttpClientModule
 
   ],
-  providers: [AuthGuard, AngularFireAuth],
+  providers: [AuthGuard, AngularFireAuth, UploadFileService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
