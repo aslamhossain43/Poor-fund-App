@@ -4,6 +4,7 @@ import { HttpResponse, HttpEventType } from '@angular/common/http';
 import { UploadFileService } from './consumers.upload.service';
 import { Consumers } from './consumers';
 import { ConsumerService } from './consumers.consumer-service';
+import { FormControl, Validators, FormGroup } from '@angular/forms';
 // PROGRESS BAR
 
 @Component({
@@ -13,15 +14,42 @@ import { ConsumerService } from './consumers.consumer-service';
   animations: [moveIn()]
 })
 export class ConsumersComponent implements OnInit {
-  // FOR CONSUMERS
-  message = '';
-   consumers: Consumers[];
-   consumer = new Consumers();
-  // FOR FILE
-  selectedpiFiles: FileList;
-  currentpiFileUpload: File;
-  selectedapiFiles: FileList;
-  currentapiFileUpload: File;
+    // FOR CONSUMERS
+    message = '';
+    consumers: Consumers[];
+    consumer = new Consumers();
+   // FOR FILE
+   selectedpiFiles: FileList;
+   currentpiFileUpload: File;
+   selectedapiFiles: FileList;
+   currentapiFileUpload: File;
+  // FOR NG MATERIAL
+ // FOR FORM FIELD
+ nameFormControl = new FormControl('', [Validators.required]);
+  countryFormControl = new FormControl('', [Validators.required]);
+  zilaFormControl = new FormControl('', [Validators.required]);
+  upozilaFormControl = new FormControl('', [Validators.required]);
+ unionFormControl = new FormControl('', [Validators.required]);
+ workFormControl = new FormControl('', [Validators.required]);
+ contactFormControl = new FormControl('', [Validators.required]);
+ bkashFormControl = new FormControl('', [Validators.required]);
+
+
+  biodataForm: FormGroup = new FormGroup({
+    name: this.nameFormControl,
+    country: this.countryFormControl,
+    zila: this.zilaFormControl,
+    upozila: this.upozilaFormControl,
+    union: this.unionFormControl,
+    work: this.workFormControl,
+    contact: this.contactFormControl,
+    bkash: this.bkashFormControl
+    // address: this.addressFormControl
+  });
+  getRequiredErrorMessage(field) {
+    return this.biodataForm.get(field).hasError('required') ? 'You must enter ' : '';
+  }
+
   ngOnInit() {
   }
   constructor(private uploadService: UploadFileService,

@@ -1,7 +1,26 @@
+// FOR BOOTSTRAP
 @import '~bootstrap/dist/css/bootstrap.min.css';
-// For AUTHENTICATION
+// FOR NG MATERIAL
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+//@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+//@import "~@angular/material/prebuilt-themes/pink-bluegrey.css";
+//@import "~@angular/material/prebuilt-themes/purple-green.css";
 
+body { 
+  font-family: Roboto, Arial, sans-serif;
+  margin: 0;
+}
 
+.basic-container {
+  padding: 5px;
+}
+
+.version-info {
+  font-size: 8pt;
+  float: right;
+}
+
+// FOR AUTHENTICATION
 body {
     background:#E2E4E6;
     padding-top:1em;

@@ -1,11 +1,122 @@
-<div id="consumersContainer" class="container">
+
+
+<div class="container-fluid">
     <div class="row">
       <div class="col-ms-6 col-ms-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
         <h3 *ngIf="message">{{message}}</h3>
          <br>
       </div>
-    <div class="col-ms-10 col-ms-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
-    <form class="form-horizontal">
+    <div class="col-ms-10 col-ms-offset-3 col-md-10 col-md-offset-3 col-lg-10 col-lg-offset-3">
+    
+     
+    
+
+
+      <form class="form" name="biodataForm" [formGroup]="biodataForm">
+
+                   <div>
+                  <p  id="headingP">(1)Upload your image,(2)Upload an image which contain your application in a single page 
+                    and signature of 
+                    your union's chairman and member
+                  </p>
+                   </div>
+      
+
+            <div class="btn btn-primary">
+                <input id="typeFile" type="file" (change)="selectpiFile($event)">
+                  </div>
+                  
+                  <div class="btn btn-primary">
+                      <input id="typeFile" type="file" (change)="selectapiFile($event)">
+                        </div>
+         <br><br>        
+
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Name" 
+            required
+            [(ngModel)]="consumer.name"
+            [formControl]="nameFormControl">
+          <mat-error *ngIf="nameFormControl.invalid">{{getRequiredErrorMessage('name')}}</mat-error>        
+        </mat-form-field>
+ 
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Country" 
+            required
+            [(ngModel)]="consumer.country"
+            [formControl]="countryFormControl">
+          <mat-error *ngIf="countryFormControl.invalid">{{getRequiredErrorMessage('country')}}</mat-error>                
+        </mat-form-field>
+       
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Zila" 
+            required
+            [(ngModel)]="consumer.zila"
+            [formControl]="zilaFormControl">
+          <mat-error *ngIf="zilaFormControl.invalid">{{getRequiredErrorMessage('zila')}}</mat-error>                
+        </mat-form-field>
+          <br>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Upoziila" 
+            required
+            [(ngModel)]="consumer.upozila"
+            [formControl]="upozilaFormControl">
+          <mat-error *ngIf="upozilaFormControl.invalid">{{getRequiredErrorMessage('upozila')}}</mat-error>                
+        </mat-form-field>
+          
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Union" 
+            required
+            [(ngModel)]="consumer.union"
+            [formControl]="unionFormControl">
+          <mat-error *ngIf="unionFormControl.invalid">{{getRequiredErrorMessage('union')}}</mat-error>                
+        </mat-form-field>
+          
+        
+               
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Work" 
+            required
+            [(ngModel)]="consumer.work"
+            [formControl]="workFormControl">
+          <mat-error *ngIf="workFormControl.invalid">{{getRequiredErrorMessage('work')}}</mat-error>                
+        </mat-form-field>
+         <br>
+    
+        <mat-form-field id="contactBkashtoright" class="full-width">
+          <input  matInput placeholder="Contact" 
+            required
+            [(ngModel)]="consumer.contact"
+            [formControl]="contactFormControl">
+          <mat-error *ngIf="contactFormControl.invalid">{{getRequiredErrorMessage('contact')}}</mat-error>                
+        </mat-form-field>
+          
+        
+        <mat-form-field class="full-width">
+          <input matInput placeholder="BKash" 
+            required
+            [(ngModel)]="consumer.bkash"
+            [formControl]="bkashFormControl">
+          <mat-error *ngIf="bkashFormControl.invalid">{{getRequiredErrorMessage('bkash')}}</mat-error>                
+        </mat-form-field>
+      
+      
+        <br><br>
+        <button id="submitButton" mat-raised-button color="primary" 
+          class="submit-button"
+        [disabled]="!(selectedpiFiles && selectedapiFiles && consumer.name
+        && consumer.country && consumer.zila && consumer.upozila &&
+        consumer.union && consumer.work && consumer.contact &&
+        consumer.bkash)"
+          (click)="uploadFile()" (click)="addConsumers()">submit</button>
+      </form>
+
+
+
+
+    
+    
+    <!--
+      <form class="form-horizontal">
     <div class="form-group">
       <label class="control-label col-sm-3" for="piFile">Select your image:</label>
       <div class="col-sm-6">
@@ -18,12 +129,9 @@
         <input type="file" class="form-control" id="apiFile"  (change)="selectapiFile($event)">
       </div>
     </div>
-    <div class="form-group">
-      <label class="control-label col-sm-3" for="name">Name:</label>
-      <div class="col-sm-6"> 
-        <input type="taxt" class="form-control" id="name"  [(ngModel)]="consumer.name" name="name" placeholder="Enter your name">
-      </div>
-    </div>
+
+    
+
 
     <div class="form-group">
         <label class="control-label col-sm-3" for="country">Country:</label>
@@ -81,14 +189,14 @@
 
     <div class="form-group"> 
       <div class="col-sm-offset-5 col-sm-2">
-        <button class="btn btn-success"  (click)="addConsumers()" [disabled]="!(selectedpiFiles && selectedapiFiles)" (click)="uploadFile()">Submit</button>
+        <button class="btn btn-success"  (click)="addConsumers()" [disabled]="!(selectedpiFiles && selectedapiFiles && consumer.name)" (click)="uploadFile()">Submit</button>
       </div>
     </div>
   </form>
 
-  </div>
+-->
+    </div>
+    </div>
+    </div>
 
-  <br><br><br><br>
-    </div>
-    </div>
-    
+   

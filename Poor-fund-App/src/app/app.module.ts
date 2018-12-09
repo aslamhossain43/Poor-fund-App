@@ -16,7 +16,7 @@ import { AppBootstrapModule } from './app-bootstrap.module';
 // AUTHENTICATION
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AuthGuard } from './auth.service';
@@ -27,6 +27,10 @@ import { MembersComponent } from './members/members.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UploadFileService } from './consumers/consumers.upload.service';
 import { ConsumerService } from './consumers/consumers.consumer-service';
+// FOR MATERIAL
+import 'hammerjs';
+import { NgMaterialModule } from './app.material';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -54,7 +58,11 @@ import { ConsumerService } from './consumers/consumers.consumer-service';
      AngularFireModule.initializeApp(environment.firebase),
      routes,
      // FOR FILE UPLOAD
-     HttpClientModule
+     HttpClientModule,
+     // FOR NG MATERIAL
+     NgMaterialModule,
+     // FOR FORM MODULE
+     ReactiveFormsModule
   ],
   providers: [AuthGuard, AngularFireAuth, UploadFileService, ConsumerService],
   bootstrap: [AppComponent]
