@@ -27,6 +27,7 @@ import { MembersComponent } from './members/members.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UploadFileService } from './consumers/consumers.upload.service';
 import { ConsumerService } from './consumers/consumers.consumer-service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +55,6 @@ import { ConsumerService } from './consumers/consumers.consumer-service';
      routes,
      // FOR FILE UPLOAD
      HttpClientModule
-
   ],
   providers: [AuthGuard, AngularFireAuth, UploadFileService, ConsumerService],
   bootstrap: [AppComponent]
