@@ -24,11 +24,13 @@ export class ConsumersComponent implements OnInit {
    selectedapiFiles: FileList;
    currentapiFileUpload: File;
   // FOR NG MATERIAL
+  // FOR STORE FILE
+piImage: any;
  // FOR FORM FIELD
  nameFormControl = new FormControl('', [Validators.required]);
   countryFormControl = new FormControl('', [Validators.required]);
-  zilaFormControl = new FormControl('', [Validators.required]);
-  upozilaFormControl = new FormControl('', [Validators.required]);
+  zelaFormControl = new FormControl('', [Validators.required]);
+  upozelaFormControl = new FormControl('', [Validators.required]);
  unionFormControl = new FormControl('', [Validators.required]);
  workFormControl = new FormControl('', [Validators.required]);
  contactFormControl = new FormControl('', [Validators.required]);
@@ -38,8 +40,8 @@ export class ConsumersComponent implements OnInit {
   biodataForm: FormGroup = new FormGroup({
     name: this.nameFormControl,
     country: this.countryFormControl,
-    zila: this.zilaFormControl,
-    upozila: this.upozilaFormControl,
+    zela: this.zelaFormControl,
+    upozela: this.upozelaFormControl,
     union: this.unionFormControl,
     work: this.workFormControl,
     contact: this.contactFormControl,
@@ -47,14 +49,14 @@ export class ConsumersComponent implements OnInit {
     // address: this.addressFormControl
   });
   getRequiredErrorMessage(field) {
-    return this.biodataForm.get(field).hasError('required') ? 'You must enter ' : '';
+    return this.biodataForm.get(field).hasError('required') ? 'You must enter ' + field : '';
   }
 
   ngOnInit() {
   }
   constructor(private uploadService: UploadFileService,
     private consumerService: ConsumerService) { }
-@HostBinding('@moveIn')
+ @HostBinding('@moveIn')
 // FOR FILE UPLOAD
 selectpiFile(event) {
   this.selectedpiFiles = event.target.files;
@@ -70,13 +72,17 @@ uploadFile() {
   this.uploadService.pushFileToStorage(this.currentpiFileUpload, this.currentapiFileUpload).subscribe(event => {
   if (event instanceof HttpResponse) {
       this.message = 'Your operation has been completed successfully';
+      console.log(event);
     }
     },
     (error) => {
      this.message = 'Your operation has not been completed successfully';
     });
 }
-
+// FOR GET PI IMAGE
+getPiImage(piCode: string): void {
+this.piImage = this.consumerService.getPiImage('API8407FF47C0');
+}
 // FOR CONSUMERS
 // ADD CONSUMERS
 addConsumers(): void {

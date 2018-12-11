@@ -5,13 +5,13 @@ import { moveIn } from '../router.animations';
   selector: 'app-about',
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.scss'],
-  animations : [moveIn()]
+ // animations : [moveIn()]
 })
 export class AboutComponent implements OnInit {
 
   constructor() { }
 
-@HostBinding('@moveIn')
+// @HostBinding('@moveIn')
 
   ngOnInit() {
   }

@@ -1,81 +1,85 @@
 
-
 <div class="container-fluid">
     <div class="row">
-      <div class="col-ms-6 col-ms-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+ 
+
+      <div class="col-ms-10 col-ms-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
         <h3 *ngIf="message">{{message}}</h3>
          <br>
       </div>
-    <div class="col-ms-10 col-ms-offset-3 col-md-10 col-md-offset-3 col-lg-10 col-lg-offset-3">
-    
-     
-    
-
-
+      
+    <div class="col-ms-10 col-ms-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
+  
       <form class="form" name="biodataForm" [formGroup]="biodataForm">
 
                    <div>
-                  <p  id="headingP">(1)Upload your image,(2)Upload an image which contain your application in a single page 
+                  <p  id="headingP">(1)Upload your image(2)Upload an application image in a single page 
                     and signature of 
-                    your union's chairman and member
+                    your union's chairman and member both.
                   </p>
                    </div>
       
 
-            <div class="btn btn-primary">
-                <input id="typeFile" type="file" (change)="selectpiFile($event)">
+            <div id="fileSelectButton"  class="btn btn-primary">
+                <input type="file" (change)="selectpiFile($event)">
                   </div>
-                  
-                  <div class="btn btn-primary">
-                      <input id="typeFile" type="file" (change)="selectapiFile($event)">
+                  <br>
+                  <div id="fileSelectButton"  class="btn btn-primary">
+                      <input type="file" (change)="selectapiFile($event)">
                         </div>
-         <br><br>        
-
+         <br><br>   
+        <div class="formDiv">
         <mat-form-field class="full-width">
           <input matInput placeholder="Name" 
             required
+            autocomplete="off"
             [(ngModel)]="consumer.name"
             [formControl]="nameFormControl">
           <mat-error *ngIf="nameFormControl.invalid">{{getRequiredErrorMessage('name')}}</mat-error>        
         </mat-form-field>
- 
+      <br>
         <mat-form-field class="full-width">
           <input matInput placeholder="Country" 
             required
+            autocomplete="off"
             [(ngModel)]="consumer.country"
             [formControl]="countryFormControl">
           <mat-error *ngIf="countryFormControl.invalid">{{getRequiredErrorMessage('country')}}</mat-error>                
         </mat-form-field>
-       
+       <br>
         <mat-form-field class="full-width">
-          <input matInput placeholder="Zila" 
+          <input matInput placeholder="Zela" 
             required
-            [(ngModel)]="consumer.zila"
-            [formControl]="zilaFormControl">
-          <mat-error *ngIf="zilaFormControl.invalid">{{getRequiredErrorMessage('zila')}}</mat-error>                
+            autocomplete="off"
+            [(ngModel)]="consumer.zela"
+            [formControl]="zelaFormControl">
+          <mat-error *ngIf="zelaFormControl.invalid">{{getRequiredErrorMessage('zela')}}</mat-error>                
         </mat-form-field>
           <br>
         <mat-form-field class="full-width">
-          <input matInput placeholder="Upoziila" 
+          <input matInput placeholder="Upozela" 
             required
-            [(ngModel)]="consumer.upozila"
-            [formControl]="upozilaFormControl">
-          <mat-error *ngIf="upozilaFormControl.invalid">{{getRequiredErrorMessage('upozila')}}</mat-error>                
+            autocomplete="off"
+            [(ngModel)]="consumer.upozela"
+            [formControl]="upozelaFormControl">
+          <mat-error *ngIf="upozelaFormControl.invalid">{{getRequiredErrorMessage('upozela')}}</mat-error>                
         </mat-form-field>
-          
+          <br>
         <mat-form-field class="full-width">
           <input matInput placeholder="Union" 
             required
+            autocomplete="off"
             [(ngModel)]="consumer.union"
             [formControl]="unionFormControl">
           <mat-error *ngIf="unionFormControl.invalid">{{getRequiredErrorMessage('union')}}</mat-error>                
         </mat-form-field>
-          
+          <br>
         
                
         <mat-form-field class="full-width">
           <input matInput placeholder="Work" 
             required
+            autocomplete="off"
             [(ngModel)]="consumer.work"
             [formControl]="workFormControl">
           <mat-error *ngIf="workFormControl.invalid">{{getRequiredErrorMessage('work')}}</mat-error>                
@@ -85,26 +89,28 @@
         <mat-form-field id="contactBkashtoright" class="full-width">
           <input  matInput placeholder="Contact" 
             required
+            autocomplete="off"
             [(ngModel)]="consumer.contact"
             [formControl]="contactFormControl">
           <mat-error *ngIf="contactFormControl.invalid">{{getRequiredErrorMessage('contact')}}</mat-error>                
         </mat-form-field>
-          
+          <br>
         
         <mat-form-field class="full-width">
           <input matInput placeholder="BKash" 
             required
+            autocomplete="off"
             [(ngModel)]="consumer.bkash"
             [formControl]="bkashFormControl">
           <mat-error *ngIf="bkashFormControl.invalid">{{getRequiredErrorMessage('bkash')}}</mat-error>                
         </mat-form-field>
+      </div>
       
-      
-        <br><br>
+        <br>
         <button id="submitButton" mat-raised-button color="primary" 
           class="submit-button"
         [disabled]="!(selectedpiFiles && selectedapiFiles && consumer.name
-        && consumer.country && consumer.zila && consumer.upozila &&
+        && consumer.country && consumer.zela && consumer.upozela &&
         consumer.union && consumer.work && consumer.contact &&
         consumer.bkash)"
           (click)="uploadFile()" (click)="addConsumers()">submit</button>
@@ -113,88 +119,7 @@
 
 
 
-    
-    
-    <!--
-      <form class="form-horizontal">
-    <div class="form-group">
-      <label class="control-label col-sm-3" for="piFile">Select your image:</label>
-      <div class="col-sm-6">
-        <input type="file" class="form-control" id="piFile"  (change)="selectpiFile($event)">
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-sm-3" for="apiFile">Select signature image:</label>
-      <div class="col-sm-6">
-        <input type="file" class="form-control" id="apiFile"  (change)="selectapiFile($event)">
-      </div>
-    </div>
 
-    
-
-
-    <div class="form-group">
-        <label class="control-label col-sm-3" for="country">Country:</label>
-        <div class="col-sm-6"> 
-          <input type="taxt" class="form-control" id="country"  [(ngModel)]="consumer.country" name="country" placeholder="Enter your country">
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label class="control-label col-sm-3" for="zila">Zila:</label>
-        <div class="col-sm-6"> 
-          <input type="taxt" class="form-control" id="zila"  [(ngModel)]="consumer.zila" name="zila" placeholder="Enter your zila">
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label class="control-label col-sm-3" for="upozila">Upozila:</label>
-        <div class="col-sm-6"> 
-          <input type="taxt" class="form-control" id="upozila"  [(ngModel)]="consumer.upozila" name="upozila" placeholder="Enter your upozila">
-        </div>
-      </div>
-
-
-      <div class="form-group">
-        <label class="control-label col-sm-3" for="union">Union:</label>
-        <div class="col-sm-6"> 
-          <input type="taxt" class="form-control" id="union"  [(ngModel)]="consumer.union" name="union" placeholder="Enter your union">
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label class="control-label col-sm-3" for="work">Work:</label>
-        <div class="col-sm-6"> 
-          <input type="taxt" class="form-control" id="work"  [(ngModel)]="consumer.work" name="work" placeholder="Enter your work">
-        </div>
-      </div>
-
-
-
-      <div class="form-group">
-        <label class="control-label col-sm-3" for="contact">Contact:</label>
-        <div class="col-sm-6"> 
-          <input type="taxt" class="form-control" id="contact"  [(ngModel)]="consumer.contact" name="contact" placeholder="Enter your contact number">
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label class="control-label col-sm-3" for="bkash">BKash:</label>
-        <div class="col-sm-6"> 
-          <input type="taxt" class="form-control" id="bkash"  [(ngModel)]="consumer.bkash" name="bkash" placeholder="Enter your bkash/rocket numer">
-        </div>
-      </div>
-
-
-
-    <div class="form-group"> 
-      <div class="col-sm-offset-5 col-sm-2">
-        <button class="btn btn-success"  (click)="addConsumers()" [disabled]="!(selectedpiFiles && selectedapiFiles && consumer.name)" (click)="uploadFile()">Submit</button>
-      </div>
-    </div>
-  </form>
-
--->
     </div>
     </div>
     </div>

@@ -1,23 +1,33 @@
+
 // FOR NG MATERIAL 
 // form field
-.example-container {
+.container-fluid {
+  padding:1.2em;
+  margin-top: 1%;
+ margin-bottom: 1%;
+  width:50%;
+  margin-left:25%;
+  height:100%;
+}
+
+.formDiv {
   display: flex;
   flex-direction: column;
 }
 
-.example-container > * {
+.formDiv > * {
   width: 100%;
 }
-#typeFile{
-width: 246px;
-}
-#contactBkashtoright{
-margin-left: 9%;
 
+#fileSelectButton{
+  width: 100%;
+padding: 2%;
+}
+
+#headingP{
+  font-size: 10px;
+ width: 100%;
 }
 #submitButton{
-  margin-left: 20%;
-}
-#headingP{
- width: 50%;
+  margin-left: 42%;
 }

@@ -2,8 +2,91 @@
         <div class="row">
         <div class="col-ms-10 col-ms-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
         <h2>about page works</h2>
-       
-              
+        Start by adding a regular matInput to your template. Let's assume you're using the formControl directive from ReactiveFormsModule to track the value of the input.
+
+        Note: It is possible to use template-driven forms instead, if you prefer. We use reactive forms in this example because it makes subscribing to changes in the input's value easy. For this example, be sure to import ReactiveFormsModule from @angular/forms into your NgModule. If you are unfamiliar with using reactive forms, you can read more about the subject in the Angular documentation.
+        
+        my-comp.html
+        
+        <mat-form-field>
+          <input type="text" matInput [formControl]="myControl">
+        </mat-form-field>
+        Next, create the autocomplete panel and the options displayed inside it. Each option should be defined by a mat-option tag. Set each option's value property to whatever you'd like the value of the text input to be upon that option's selection.
+        
+        my-comp.html
+        
+        <mat-autocomplete>
+          <mat-option *ngFor="let option of options" [value]="option">
+            {{ option }}
+          </mat-option>
+        </mat-autocomplete>
+        Now we'll need to link the text input to its panel. We can do this by exporting the autocomplete panel instance into a local template variable (here we called it "auto"), and binding that variable to the input's matAutocomplete property.
+        
+        my-comp.html
+        
+        <mat-form-field>
+          <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
+        </mat-form-field>
+        
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of options" [value]="option">{{option}}</mat-option>
+        </mat-autocomplete>
+        Simple autocomplete
+        
+        Pick one
+         Adding a custom filter
+        At this point, the autocomplete panel should be toggleable on focus and options should be selectable. But if we want our options to filter when we type, we need to add a custom filter.
+        
+        You can filter the options in any way you like based on the text input*. Here we will perform a simple string test on the option value to see if it matches the input value, starting from the option's first letter. We already have access to the built-in valueChanges Observable on the FormControl, so we can simply map the text input's values to the suggested options by passing them through this filter. The resulting Observable, filteredOptions, can be added to the template in place of the options property using the async pipe.
+        
+        Below we are also priming our value change stream with an empty string so that the options are filtered by that value on init (before there are any value changes).
+        
+        *For optimal accessibility, you may want to consider adding text guidance on the page to explain filter criteria. This is especially helpful for screenreader users if you're using a non-standard filter that doesn't limit matches to the beginning of the string.
+        
+        Filter autocomplete
+        
+        Pick one
+         Setting separate control and display values
+        If you want the option's heckbox label
+        The checkbox label is provided as the content to the  element. The label can be positioned before or after the checkbox by setting the labelPosition property to 'before' or 'after'.
+        
+        If you don't want the label to appear next to the checkbox, you can use aria-label or aria-labelledby to specify an appropriate label.
+        
+         Use with @angular/forms
+   is compatible with @angular/forms and supports both FormsModule and ReactiveFormsModule.
+        
+         Indeterminate state
+       supports an indeterminate state, similar to the native. While the indeterminate property of the checkbox is true, it will render as indeterminate regardless of the checked value. Any interaction with the checkbox by a user (i.e., clicking) will remove the indeterminate state.
+        
+         Click action config
+        When user clicks on the mat-checkbox, the default behavior is toggle checked value and set indeterminate to false. This behavior can be customized by providing a new value of MAT_CHECKBOX_CLICK_ACTION to the checkbox.
+        
+         noop
+        Do not change the checked value or indeterminate value. Developers have the power to implement customized click actions.
+        
+         check
+        Toggle checked value of the checkbox, ignore indeterminate value. If the checkbox is in indeterminate state, the checkbox will display as an indeterminate checkbox regardless the checked value.
+        
+         check-indeterminate
+        Default behavior of mat-checkbox. Always set indeterminate to false when user click on the mat-checkbox. This matches the behavior of native
+        
+         Theming
+        The color of a can be changed by using the color property. By default, checkboxes use the theme's accent color. This can be changed to 'primary' or 'warn'.
+        
+         Accessibility
+        The uses an internal to provide an accessible experience. This internal checkbox receives focus and is automatically labelled by the text content of theelement.
+        
+        Checkboxes without text or labels should be 
+
+        Start by adding a regular matInput to your template. Let's assume you're using the formControl directive from ReactiveFormsModule to track the value of the input. Note: It is possible to use template-driven forms instead, if you prefer. We use reactive forms in this example because it makes subscribing to changes in the input's value easy. For this example, be sure to import ReactiveFormsModule from @angular/forms into your NgModule. If you are unfamiliar with using reactive forms, you can read more about the subject in the Angular documentation. my-comp.html 
+
+        Next, create the autocomplete panel and the options displayed inside it. Each option should be defined by a mat-option tag. Set each option's value property to whatever you'd like the value of the text input to be upon that option's selection. my-comp.html Now we'll need to link the text input to its panel. We can do this by exporting the autocomplete panel instance into a local template variable (here we called it "auto"), and binding that variable to the input's matAutocomplete property. my-comp.html 
+        
+         Simple autocomplete Pick one Adding a custom filter At this point, the autocomplete panel should be toggleable on focus and options should be selectable. But if we want our options to filter when we type, we need to add a custom filter. You can filter the options in any way you like based on the text input*. Here we will perform a simple string test on the option value to see if it matches the input value, starting from the option's first letter. We already have access to the built-in valueChanges Observable on the FormControl, so we can simply map the text input's values to the suggested options by passing them through this filter. The resulting Observable, filteredOptions, can be added to the template in place of the options property using the async pipe. Below we are also priming our value change stream with an empty string so that the options are filtered by that value on init (before there are any value changes). *For optimal accessibility, you may want to consider adding text guidance on the page to explain filter criteria. This is especially helpful for screenreader users if you're using a non-standard filter that doesn't limit matches to the beginning of the string. Filter autocomplete Pick one Setting separate control and display values If you want the option's heckbox label The checkbox label is provided as the content to the element. The label can be positioned before or after the checkbox by setting the labelPosition property to 'before' or 'after'. If you don't want the label to appear next to the checkbox, you can use aria-label or aria-labelledby to specify an appropriate label. Use with @angular/forms is compatible with @angular/forms and supports both FormsModule and ReactiveFormsModule. Indeterminate state supports an indeterminate state, similar to the native. While the indeterminate property of the checkbox is true, it will render as indeterminate regardless of the checked value. Any interaction with the checkbox by a user (i.e., clicking) will remove the indeterminate state. Click action config When user clicks on the mat-checkbox, the default behavior is toggle checked value and set indeterminate to false. This behavior can be customized by providing a new value of MAT_CHECKBOX_CLICK_ACTION to the checkbox. noop Do not change the checked value or indeterminate value. Developers have the power to implement customized click actions. check Toggle checked value of the checkbox, ignore indeterminate value. If the checkbox is in indeterminate state, the checkbox will display as an indeterminate checkbox regardless the checked value. check-indeterminate Default behavior of mat-checkbox. Always set indeterminate to false when user click on the mat-checkbox. This matches the behavior of native Theming The color of a can be changed by using the color property. By default, checkboxes use the theme's accent color. This can be changed to 'primary' or 'warn'. Accessibility The uses an internal to provide an accessible experience. This internal checkbox receives focus and is automatically labelled by the text content of theelement. Checkboxes without text or labels should be
+
+
+
+
         </div>
         </div>
         </div>

@@ -1,12 +1,22 @@
 
 // AUTHENTICATION
 
+.form-container {
+    background:pink;
+    padding:1.2em;
+    margin-top: 1%;
+   margin-bottom: 1%;
+    width:50%;
+    margin-left:25%;
+    height:100%;
+  }
+  
 button{
     padding:1.2em;
     width:100%;
     cursor:pointer;
     margin-bottom:15px;
-    font-size:1.3em;
+    font-size:1em;
 }
 
 
@@ -16,20 +26,21 @@ button{
     display:block;
 }
 
+
 #fb {
-   background:#3B5998; /* url('assets/images/fb.svg') no-repeat 14px 6px;*/
+     background:#3B5998;
     background-size: 47px;
     color:#fff;
 }
 
 #google {
     border: 1px solid #95989A;
-    background: #fff;/*  url('assets/images/google.svg') no-repeat 25px;*/
+    background: #fff;
     background-size: 25px;
 }
 
 #email {
-    background: #ECECEC;/*  url('assets/images/email.svg') no-repeat 25px;*/
+    background: #ECECEC;
     background-size: 25px;
 }
 
@@ -53,7 +64,21 @@ button{
         background: #ECECEC;
     }
 }
-//
+
+.alc {
+    text-align:center;
+    display:block;
+    margin: 15px 0;
+  }
+  
+
+
+
+
+
+
+
+
 
 
 
