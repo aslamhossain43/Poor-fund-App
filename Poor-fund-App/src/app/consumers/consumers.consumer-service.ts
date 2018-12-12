@@ -1,11 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Http, RequestOptions, Headers, ResponseContentType } from '@angular/http';
+import { Http, RequestOptions, Headers} from '@angular/http';
 import { Consumers } from './consumers';
-import { Observable } from 'rxjs';
-import { Body } from '@angular/http/src/body';
-import { Options } from 'selenium-webdriver/firefox';
-import { map } from 'rxjs-compat/operator/map';
-
 @Injectable()
 export class ConsumerService {
 
@@ -22,10 +17,6 @@ if (consumers.id) {
 }
 }
 
-getPiImage(piCode: string): Observable<any> {
-return this.httpService.get('http://localhost:8080/consumers/image/' + piCode);
-
-}
 
 
 

@@ -1,16 +1,16 @@
 import {trigger, state, animate, style, transition} from '@angular/animations';
-
+// FOR AUTHENTICATION
 export function moveIn() {
   return trigger('moveIn', [
      state('void', style({position: 'fixed', width: '100%'}) ),
-    // state('*', style({position: 'fixed', width: '100%'}) ),
+    state('*', style({position: 'fixed', width: '100%'}) ),
     transition(':enter', [
-      style({opacity: '0', transform: 'translateX(100px)'}),
-      animate('.6s ease-in-out', style({opacity: '1', transform: 'translateX(0)'}))
+      style({opacity: '0', transform: 'translateX(50%)'}),
+      animate('1s ease-in-out', style({opacity: '1', transform: 'translateX(0)'}))
     ]),
     transition(':leave', [
       style({opacity: '1', transform: 'translateX(0)'}),
-      animate('.3s ease-in-out', style({opacity: '0', transform: 'translateX(-200px)'}))
+      animate('0.5s ease-in-out', style({opacity: '0.5', transform: 'translateX(-100%)'}))
     ])
   ]);
 }
@@ -35,5 +35,18 @@ export function moveInLeft() {
       animate('.6s .2s ease-in-out', style({opacity: '1', transform: 'translateX(0)'}))
     ])
   ]);
+}
+// FOR CONSUMER
+export function consumerMoveIn() {
+  return trigger('consumerMoveIn', [
+    state('void', style({position: 'fixed', width: '100%'}) ),
+    transition(':enter', [
+      style({opacity: '0', transform: 'translateX(50%)'}),
+     animate('1s ease-in-out', style({opacity: '1', transform: 'translateX(0)'}))
+    ]),
+  transition(':leave', [
+    style({opacity: '0.5', transform: 'translateX(0)'}),
+    animate('1s ease-in-out', style({opacity: '0.4', transform: 'translateX(-100%)'}))
+  ])]);
 }
 

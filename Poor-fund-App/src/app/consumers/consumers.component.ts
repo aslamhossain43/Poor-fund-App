@@ -1,5 +1,5 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
-import { moveIn } from '../router.animations';
+import { moveIn, consumerMoveIn } from '../router.animations';
 import { HttpResponse, HttpEventType } from '@angular/common/http';
 import { UploadFileService } from './consumers.upload.service';
 import { Consumers } from './consumers';
@@ -11,7 +11,7 @@ import { FormControl, Validators, FormGroup } from '@angular/forms';
   selector: 'app-consumers',
   templateUrl: './consumers.component.html',
   styleUrls: ['./consumers.component.scss'],
-  animations: [moveIn()]
+  animations: [consumerMoveIn()]
 })
 export class ConsumersComponent implements OnInit {
     // FOR CONSUMERS
@@ -24,15 +24,14 @@ export class ConsumersComponent implements OnInit {
    selectedapiFiles: FileList;
    currentapiFileUpload: File;
   // FOR NG MATERIAL
-  // FOR STORE FILE
-piImage: any;
+
  // FOR FORM FIELD
- nameFormControl = new FormControl('', [Validators.required]);
-  countryFormControl = new FormControl('', [Validators.required]);
-  zelaFormControl = new FormControl('', [Validators.required]);
-  upozelaFormControl = new FormControl('', [Validators.required]);
- unionFormControl = new FormControl('', [Validators.required]);
- workFormControl = new FormControl('', [Validators.required]);
+ nameFormControl = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]);
+  countryFormControl = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]);
+  zelaFormControl = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]);
+  upozelaFormControl = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]);
+ unionFormControl = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]);
+ workFormControl = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]);
  contactFormControl = new FormControl('', [Validators.required]);
  bkashFormControl = new FormControl('', [Validators.required]);
 
@@ -48,15 +47,28 @@ piImage: any;
     bkash: this.bkashFormControl
     // address: this.addressFormControl
   });
-  getRequiredErrorMessage(field) {
-    return this.biodataForm.get(field).hasError('required') ? 'You must enter ' + field : '';
+  // FOR STRING VALIDATION
+  getRequiredErrorMessageForString(field) {
+    if (this.biodataForm.get(field).hasError('required')) {
+      return this.biodataForm.get(field).hasError('required') ? 'You must enter ' + field : '';
+    } else if (this.biodataForm.get(field).hasError('minlength')) {
+      return this.biodataForm.get(field).hasError('minlength') ? 'You must enter ' + field + ' minimum 3 characters' : '';
+    } else if (this.biodataForm.get(field).hasError('maxlength')) {
+      return this.biodataForm.get(field).hasError('maxlength') ? 'You must enter ' + field + ' maximum 30 characters' : '';
+    } else {
+    return this.biodataForm.get(field).hasError('type') ? 'You must enter valid ' + field : '';
+    }
+  }
+
+  getRequiredErrorMessageForNumber(field) {
+    return this.biodataForm.get(field).hasError('required') ? 'You must enter valid ' + field + ' number' : '';
   }
 
   ngOnInit() {
   }
   constructor(private uploadService: UploadFileService,
     private consumerService: ConsumerService) { }
- @HostBinding('@moveIn')
+ @HostBinding('@consumerMoveIn')
 // FOR FILE UPLOAD
 selectpiFile(event) {
   this.selectedpiFiles = event.target.files;
@@ -69,7 +81,8 @@ uploadFile() {
 
   this.currentpiFileUpload = this.selectedpiFiles.item(0);
   this.currentapiFileUpload = this.selectedapiFiles.item(0);
-  this.uploadService.pushFileToStorage(this.currentpiFileUpload, this.currentapiFileUpload).subscribe(event => {
+  this.uploadService.pushFileToStorage(this.currentpiFileUpload, this.currentapiFileUpload)
+  .subscribe(event => {
   if (event instanceof HttpResponse) {
       this.message = 'Your operation has been completed successfully';
       console.log(event);
@@ -79,10 +92,7 @@ uploadFile() {
      this.message = 'Your operation has not been completed successfully';
     });
 }
-// FOR GET PI IMAGE
-getPiImage(piCode: string): void {
-this.piImage = this.consumerService.getPiImage('API8407FF47C0');
-}
+
 // FOR CONSUMERS
 // ADD CONSUMERS
 addConsumers(): void {
