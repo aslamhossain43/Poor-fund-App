@@ -98,6 +98,8 @@ uploadFile() {
 addConsumers(): void {
   this.consumerService.addConsumers(this.consumer)
   .subscribe((response) => {
+    // FOR UPLOADING FILE
+    this.uploadFile();
     console.log(response);
   }, (error) => {
     console.log(error);
@@ -106,4 +108,5 @@ addConsumers(): void {
 }
 
 }
+
 
