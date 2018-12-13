@@ -49,20 +49,21 @@ import { from } from 'rxjs';
   ],
   imports: [
     BrowserModule,
-        // FOR BOOTSTRAP
-     AppBootstrapModule,
-     // FOR AUTHENTICATION
-     BrowserAnimationsModule,
-     FormsModule,
-     HttpModule,
-     AngularFireModule.initializeApp(environment.firebase),
-     routes,
-     // FOR FILE UPLOAD
-     HttpClientModule,
-     // FOR NG MATERIAL
-     NgMaterialModule,
-     // FOR FORM MODULE
-     ReactiveFormsModule
+    // FOR BOOTSTRAP
+    AppBootstrapModule,
+    // FOR AUTHENTICATION
+    BrowserAnimationsModule,
+    FormsModule,
+    HttpModule,
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    routes,
+    // FOR FILE UPLOAD
+    HttpClientModule,
+    // FOR NG MATERIAL
+    NgMaterialModule,
+    // FOR FORM MODULE
+    ReactiveFormsModule
   ],
   providers: [AuthGuard, AngularFireAuth, UploadFileService, ConsumerService],
   bootstrap: [AppComponent]

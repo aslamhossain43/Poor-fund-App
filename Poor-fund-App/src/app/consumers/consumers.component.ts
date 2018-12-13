@@ -1,11 +1,15 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { moveIn, consumerMoveIn } from '../router.animations';
-import { HttpResponse, HttpEventType } from '@angular/common/http';
+import { HttpResponse, HttpEventType, HttpClient } from '@angular/common/http';
 import { UploadFileService } from './consumers.upload.service';
 import { Consumers } from './consumers';
 import { ConsumerService } from './consumers.consumer-service';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
-// PROGRESS BAR
+import { Http } from '@angular/http';
+import { Router } from '@angular/router';
+import { router } from '../app.routes';
+import { Alert } from 'selenium-webdriver';
+
 
 @Component({
   selector: 'app-consumers',
@@ -14,26 +18,25 @@ import { FormControl, Validators, FormGroup } from '@angular/forms';
   animations: [consumerMoveIn()]
 })
 export class ConsumersComponent implements OnInit {
-    // FOR CONSUMERS
-    message = '';
-    consumers: Consumers[];
-    consumer = new Consumers();
-   // FOR FILE
-   selectedpiFiles: FileList;
-   currentpiFileUpload: File;
-   selectedapiFiles: FileList;
-   currentapiFileUpload: File;
+  // FOR CONSUMERS
+  consumers: Consumers[];
+  consumer = new Consumers();
+  // FOR FILE
+  selectedpiFiles: FileList;
+  currentpiFileUpload: File;
+  selectedapiFiles: FileList;
+  currentapiFileUpload: File;
   // FOR NG MATERIAL
 
- // FOR FORM FIELD
- nameFormControl = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]);
+  // FOR FORM FIELD
+  nameFormControl = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]);
   countryFormControl = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]);
   zelaFormControl = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]);
   upozelaFormControl = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]);
- unionFormControl = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]);
- workFormControl = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]);
- contactFormControl = new FormControl('', [Validators.required]);
- bkashFormControl = new FormControl('', [Validators.required]);
+  unionFormControl = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]);
+  workFormControl = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]);
+  contactFormControl = new FormControl('', [Validators.required]);
+  bkashFormControl = new FormControl('', [Validators.required]);
 
 
   biodataForm: FormGroup = new FormGroup({
@@ -45,7 +48,6 @@ export class ConsumersComponent implements OnInit {
     work: this.workFormControl,
     contact: this.contactFormControl,
     bkash: this.bkashFormControl
-    // address: this.addressFormControl
   });
   // FOR STRING VALIDATION
   getRequiredErrorMessageForString(field) {
@@ -56,56 +58,56 @@ export class ConsumersComponent implements OnInit {
     } else if (this.biodataForm.get(field).hasError('maxlength')) {
       return this.biodataForm.get(field).hasError('maxlength') ? 'You must enter ' + field + ' maximum 30 characters' : '';
     } else {
-    return this.biodataForm.get(field).hasError('type') ? 'You must enter valid ' + field : '';
+      return this.biodataForm.get(field).hasError('type') ? 'You must enter valid ' + field : '';
     }
   }
 
   getRequiredErrorMessageForNumber(field) {
     return this.biodataForm.get(field).hasError('required') ? 'You must enter valid ' + field + ' number' : '';
   }
-
+  // NG LIFE CYCLE
   ngOnInit() {
   }
   constructor(private uploadService: UploadFileService,
-    private consumerService: ConsumerService) { }
- @HostBinding('@consumerMoveIn')
-// FOR FILE UPLOAD
-selectpiFile(event) {
-  this.selectedpiFiles = event.target.files;
-}
-selectapiFile(event) {
-  this.selectedapiFiles = event.target.files;
-}
+    private consumerService: ConsumerService, private routers: Router) { }
+  // FOR BINDING ANIMATION
+  @HostBinding('@consumerMoveIn')
+  // FOR FILE UPLOAD
+  selectpiFile(event) {
+    this.selectedpiFiles = event.target.files;
+  }
+  selectapiFile(event) {
+    this.selectedapiFiles = event.target.files;
+  }
 
-uploadFile() {
+  uploadFile() {
 
-  this.currentpiFileUpload = this.selectedpiFiles.item(0);
-  this.currentapiFileUpload = this.selectedapiFiles.item(0);
-  this.uploadService.pushFileToStorage(this.currentpiFileUpload, this.currentapiFileUpload)
-  .subscribe(event => {
-  if (event instanceof HttpResponse) {
-      this.message = 'Your operation has been completed successfully';
-      console.log(event);
-    }
-    },
-    (error) => {
-     this.message = 'Your operation has not been completed successfully';
-    });
-}
+    this.currentpiFileUpload = this.selectedpiFiles.item(0);
+    this.currentapiFileUpload = this.selectedapiFiles.item(0);
+    this.uploadService.pushFileToStorage(this.currentpiFileUpload, this.currentapiFileUpload)
+      .subscribe(response => {
+        if (response.statusText === 'OK') {
+          // IT MUST BE CALL BEFOR ALERT ,OTHERWISE DATA NOT SEND
+          this. addConsumers();
+          alert('Your operation has been completed successfully !');
+        }
+      },
+        (error) => {
+          alert('Your operation has been failed.Select a valid image');
+        });
+  }
 
-// FOR CONSUMERS
-// ADD CONSUMERS
-addConsumers(): void {
-  this.consumerService.addConsumers(this.consumer)
-  .subscribe((response) => {
-    // FOR UPLOADING FILE
-    this.uploadFile();
-    console.log(response);
-  }, (error) => {
-    console.log(error);
-  });
-
-}
+  // FOR CONSUMERS
+  // ADD CONSUMERS
+  addConsumers() {
+    this.consumerService.addConsumers(this.consumer)
+      .subscribe(response => {
+       console.log(response.statusText);
+      },
+        (error) => {
+         console.log(error);
+        });
+  }
 
 }
 

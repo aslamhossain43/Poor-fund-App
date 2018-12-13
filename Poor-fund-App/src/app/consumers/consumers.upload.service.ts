@@ -1,17 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Http } from '@angular/http';
 @Injectable()
 export class UploadFileService {
-  constructor(private http: HttpClient) { }
-  pushFileToStorage(piFile: File, apiFile: File): Observable<HttpEvent<{}>> {
+  constructor(private http: Http) { }
+  pushFileToStorage(piFile: File, apiFile: File) {
     const formdata: FormData = new FormData();
     formdata.append('piFile', piFile);
     formdata.append('apiFile', apiFile);
-    const req = new HttpRequest('POST', 'http://localhost:8080/consumers/addFile', formdata, {
-      responseType: 'text'
-    });
-    return this.http.request(req);
+    return this.http.post('http://localhost:8080/consumers/addFile', formdata);
   }
 
 }

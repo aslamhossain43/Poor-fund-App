@@ -9,22 +9,22 @@ import { Router } from '@angular/router';
 export class NavComponent implements OnInit {
   authenticatedName: any;
   constructor(public af: AngularFireAuth, private router: Router) {
-   this.af.authState.subscribe(auth => {
-     if (!auth.displayName) {
-       this.authenticatedName = auth.email;
-     } else {
-       this.authenticatedName = auth.displayName;
-     }
-   });
+    this.af.authState.subscribe(auth => {
+      if (!auth.displayName) {
+        this.authenticatedName = auth.email;
+      } else {
+        this.authenticatedName = auth.displayName;
+      }
+    });
 
-    }
-    // FOR NAV COLLAPSE
+  }
+  // FOR NAV COLLAPSE
   isCollapsed = true;
   // LOGOUT
   logout() {
     this.af.auth.signOut();
     this.authenticatedName = null;
-     this.router.navigateByUrl('/login');
+    this.router.navigateByUrl('/login');
   }
   ngOnInit() {
   }

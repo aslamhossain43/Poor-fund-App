@@ -13,17 +13,17 @@ import { MembersComponent } from './members/members.component';
 import { ModuleWithProviders } from '@angular/core';
 import { EmailComponent } from './email/email.component';
 export const router: Routes = [
- {path: '', redirectTo: 'login', pathMatch: 'full'},
- {path: 'login', component: LoginComponent},
- { path: 'login-email', component: EmailComponent },
-  {path: 'home', component: HomeComponent },
-  {path: 'about', component: AboutComponent},
-  {path: 'donors', component: DonorsComponent},
-  {path: 'consumers', component: ConsumersComponent},
-  {path: 'contact', component: ContactComponent},
-  {path: 'manage', component: ManageComponent, canActivate: [AuthGuard]},
- {path: 'members', component: MembersComponent, canActivate: [AuthGuard]},
-  {path: 'signup', component: SignupComponent}
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  { path: 'login-email', component: EmailComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'donors', component: DonorsComponent },
+  { path: 'consumers', component: ConsumersComponent },
+  { path: 'contact', component: ContactComponent },
+  { path: 'manage', component: ManageComponent, canActivate: [AuthGuard] },
+  { path: 'members', component: MembersComponent, canActivate: [AuthGuard] },
+  { path: 'signup', component: SignupComponent }
 ];
 
 export const routes: ModuleWithProviders = RouterModule.forRoot(router);

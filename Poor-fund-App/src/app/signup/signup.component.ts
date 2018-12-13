@@ -19,7 +19,7 @@ export class SignupComponent implements OnInit {
 
   }
   // TO BIND EXPORTED ANIMATION FUNCTION
-@HostBinding('@moveIn')
+  @HostBinding('@moveIn')
 
 
   onSubmit(formData) {
@@ -29,11 +29,11 @@ export class SignupComponent implements OnInit {
         formData.value.password
       ).then(
         (success) => {
-        this.router.navigate(['/manage']);
-      }).catch(
-        (err) => {
-        this.error = err;
-      });
+          this.router.navigate(['/manage']);
+        }).catch(
+          (err) => {
+            this.error = err;
+          });
     }
   }
 

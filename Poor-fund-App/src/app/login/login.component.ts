@@ -3,7 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { moveIn } from '../router.animations';
 import { auth as authen } from 'firebase';
-@ Component({
+@Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
@@ -12,36 +12,36 @@ import { auth as authen } from 'firebase';
 export class LoginComponent implements OnInit {
 
   error: any;
-    constructor(public af: AngularFireAuth, private router: Router) {
+  constructor(public af: AngularFireAuth, private router: Router) {
 
-      this.af.authState.subscribe(auth => {
-        if (auth) {
+    this.af.authState.subscribe(auth => {
+      if (auth) {
         this.router.navigateByUrl('/members');
       }
     });
   }
 
-// TO BIND EXPORTED ANIMATION FUNCTION
-@HostBinding('@moveIn')
+  // TO BIND EXPORTED ANIMATION FUNCTION
+  @HostBinding('@moveIn')
 
   loginFb() {
     this.af.auth.signInWithPopup(new authen.FacebookAuthProvider()).then(
-        (success) => {
+      (success) => {
         this.router.navigate(['/members']);
       }).catch(
         (err) => {
-        this.error = err;
-      });
+          this.error = err;
+        });
   }
 
   loginGoogle() {
     this.af.auth.signInWithPopup(new authen.GoogleAuthProvider()).then(
-        (success) => {
+      (success) => {
         this.router.navigate(['/manage']);
       }).catch(
         (err) => {
-        this.error = err;
-      });
+          this.error = err;
+        });
   }
 
   ngOnInit() {
