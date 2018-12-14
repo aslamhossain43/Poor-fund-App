@@ -2,9 +2,10 @@
   <div class="row">
 
     <div class="col-ms-10 col-ms-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
-
+      <mat-progress-bar *ngIf="!msg" mode="indeterminate"></mat-progress-bar>
+      <br>
+     
       <form class="form" name="biodataForm" [formGroup]="biodataForm">
-
         <div>
           <p id="headingP">(1)Upload your image(2)Upload an application image in a single page
             and signature of
@@ -14,11 +15,12 @@
 
 
         <div id="fileSelectButton" class="btn btn-primary">
-          <input type="file" (change)="selectpiFile($event)">
+          <input type="file" required [formControl]="selectedPiFileControl" (change)="selectpiFile($event)" [(ngModel)]="consumer.selectedPiFile">
         </div>
-        <br>
+        <br><br>
         <div id="fileSelectButton" class="btn btn-primary">
-          <input type="file" (change)="selectapiFile($event)">
+          <input type="file" required [formControl]="selectedPiFileControl" (change)="selectapiFile($event)"
+            [(ngModel)]="consumer.selectedApiFile">
         </div>
         <br><br>
         <div class="formDiv">

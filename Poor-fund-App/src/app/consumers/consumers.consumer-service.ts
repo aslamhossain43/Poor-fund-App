@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Http, RequestOptions, Headers, ResponseType } from '@angular/http';
+import { Http, RequestOptions, Headers } from '@angular/http';
 import { Consumers } from './consumers';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs-compat/operator/map';
 @Injectable()
 export class ConsumerService {
 

@@ -50,3 +50,16 @@ export function consumerMoveIn() {
     ])]);
 }
 
+// FOR VIEW CANDIDATES
+export function viewCandidatesMoveIn() {
+  return trigger('viewCandidatesMoveIn', [
+    state('void', style({ position: 'fixed', width: '100%' })),
+    transition(':enter', [
+      style({ opacity: '0', transform: 'translateY(100%)' }), // from 100% Y,
+      animate('1s ease-in-out', style({ opacity: '1', transform: 'translateY(0%)' })) // last position 0 Y
+    ]),
+    transition(':leave', [
+      style({ opacity: '1', transform: 'translateY(0%)' }), // from where
+      animate('1s ease-in-out', style({ opacity: '0.7', transform: 'translateY(100%)' }))
+    ])]);
+}

@@ -1,14 +1,12 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
-import { moveIn, consumerMoveIn } from '../router.animations';
-import { HttpResponse, HttpEventType, HttpClient } from '@angular/common/http';
+import { Component, OnInit, HostBinding, Inject } from '@angular/core';
+import { consumerMoveIn } from '../router.animations';
+import { HttpEventType } from '@angular/common/http';
 import { UploadFileService } from './consumers.upload.service';
 import { Consumers } from './consumers';
 import { ConsumerService } from './consumers.consumer-service';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
-import { Http } from '@angular/http';
 import { Router } from '@angular/router';
-import { router } from '../app.routes';
-import { Alert } from 'selenium-webdriver';
+
 
 
 @Component({
@@ -18,6 +16,8 @@ import { Alert } from 'selenium-webdriver';
   animations: [consumerMoveIn()]
 })
 export class ConsumersComponent implements OnInit {
+  // FOR MESSGAE
+  msg = 'offPrpgressBar';
   // FOR CONSUMERS
   consumers: Consumers[];
   consumer = new Consumers();
@@ -37,6 +37,8 @@ export class ConsumersComponent implements OnInit {
   workFormControl = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]);
   contactFormControl = new FormControl('', [Validators.required]);
   bkashFormControl = new FormControl('', [Validators.required]);
+  selectedPiFileControl = new FormControl('', [Validators.required]);
+  selectedApiFileControl = new FormControl('', [Validators.required]);
 
 
   biodataForm: FormGroup = new FormGroup({
@@ -47,7 +49,10 @@ export class ConsumersComponent implements OnInit {
     union: this.unionFormControl,
     work: this.workFormControl,
     contact: this.contactFormControl,
-    bkash: this.bkashFormControl
+    bkash: this.bkashFormControl,
+    // FOR RESET PURPOSE ONLU
+    selectedPiFile: this.selectedPiFileControl,
+    selectedApiFile: this.selectedApiFileControl
   });
   // FOR STRING VALIDATION
   getRequiredErrorMessageForString(field) {
@@ -65,13 +70,16 @@ export class ConsumersComponent implements OnInit {
   getRequiredErrorMessageForNumber(field) {
     return this.biodataForm.get(field).hasError('required') ? 'You must enter valid ' + field + ' number' : '';
   }
-  // NG LIFE CYCLE
-  ngOnInit() {
-  }
   constructor(private uploadService: UploadFileService,
-    private consumerService: ConsumerService, private routers: Router) { }
+    private consumerService: ConsumerService, private router: Router) { }
   // FOR BINDING ANIMATION
   @HostBinding('@consumerMoveIn')
+  // NG LIFE CYCLE
+  ngOnInit() {
+
+  }
+
+
   // FOR FILE UPLOAD
   selectpiFile(event) {
     this.selectedpiFiles = event.target.files;
@@ -81,20 +89,23 @@ export class ConsumersComponent implements OnInit {
   }
 
   uploadFile() {
-
+    this.msg = '';
     this.currentpiFileUpload = this.selectedpiFiles.item(0);
     this.currentapiFileUpload = this.selectedapiFiles.item(0);
     this.uploadService.pushFileToStorage(this.currentpiFileUpload, this.currentapiFileUpload)
       .subscribe(response => {
         if (response.statusText === 'OK') {
-          // IT MUST BE CALL BEFOR ALERT ,OTHERWISE DATA NOT SEND
-          this. addConsumers();
-          alert('Your operation has been completed successfully !');
+          this.addConsumers();
         }
       },
         (error) => {
-          alert('Your operation has been failed.Select a valid image');
-        });
+          console.log(error.statusText);
+          // YOU MUST NOT CHANGE THIS FORMAT
+          alert('Your operation is failed ! please select valid image .');
+          this.msg = 'offProgressBar';
+          this.reset();
+        }
+      );
   }
 
   // FOR CONSUMERS
@@ -102,11 +113,26 @@ export class ConsumersComponent implements OnInit {
   addConsumers() {
     this.consumerService.addConsumers(this.consumer)
       .subscribe(response => {
-       console.log(response.statusText);
+        if (response.statusText === 'OK') {
+          alert('Your operation has been completed successfully !');
+          this.msg = 'onProgressBar';
+        }
       },
         (error) => {
-         console.log(error);
         });
+  }
+
+  reset() {
+    this.consumer.name = null;
+    this.consumer.country = null;
+    this.consumer.zela = null;
+    this.consumer.upozela = null;
+    this.consumer.union = null;
+    this.consumer.work = null;
+    this.consumer.contact = null;
+    this.consumer.bkash = null;
+    this.consumer.selectedPiFile = null;
+    this.consumer.selectedApiFile = null;
   }
 
 }

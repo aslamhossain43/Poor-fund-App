@@ -12,6 +12,7 @@ import { AuthGuard } from './auth.service';
 import { MembersComponent } from './members/members.component';
 import { ModuleWithProviders } from '@angular/core';
 import { EmailComponent } from './email/email.component';
+import { ViewCandidatesComponent } from './view-candidates/view-candidates.component';
 export const router: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -20,6 +21,7 @@ export const router: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'donors', component: DonorsComponent },
   { path: 'consumers', component: ConsumersComponent },
+  { path: 'view-candidates', component: ViewCandidatesComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'manage', component: ManageComponent, canActivate: [AuthGuard] },
   { path: 'members', component: MembersComponent, canActivate: [AuthGuard] },

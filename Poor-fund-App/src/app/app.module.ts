@@ -31,6 +31,8 @@ import { ConsumerService } from './consumers/consumers.consumer-service';
 import 'hammerjs';
 import { NgMaterialModule } from './app.material';
 import { from } from 'rxjs';
+import { ViewCandidatesComponent } from './view-candidates/view-candidates.component';
+import { ViewCandidateService } from './view-candidates/view-candidates.service';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,8 @@ import { from } from 'rxjs';
     LoginComponent,
     SignupComponent,
     EmailComponent,
-    MembersComponent
+    MembersComponent,
+    ViewCandidatesComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +68,7 @@ import { from } from 'rxjs';
     // FOR FORM MODULE
     ReactiveFormsModule
   ],
-  providers: [AuthGuard, AngularFireAuth, UploadFileService, ConsumerService],
+  providers: [AuthGuard, AngularFireAuth, UploadFileService, ConsumerService, ViewCandidateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

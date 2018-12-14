@@ -1,16 +1,18 @@
 export class Consumers {
-id: string;
-piCode: string;
-name: string;
-country: string;
-zela: string;
-upozela: string;
-union: string;
-work: string;
-contact: number;
-bkash: number;
-apiCode: string;
-createdDate: string;
-lastModifiedDate: string;
-
+    id: string;
+    piCode: string;
+    name: string;
+    country: string;
+    zela: string;
+    upozela: string;
+    union: string;
+    work: string;
+    contact: number;
+    bkash: number;
+    apiCode: string;
+    createdDate: string;
+    lastModifiedDate: string;
+    // FOR FILE RESET ONLY
+    selectedPiFile: File;
+    selectedApiFile: File;
 }
