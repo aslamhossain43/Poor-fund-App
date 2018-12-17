@@ -1,8 +1,8 @@
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<nav class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <a class="navbar-brand" [routerLink]="['/home']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+      <a id="home" class="navbar-brand" [routerLink]="['/home']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">Home</a>
       <div id="navbarToggleRight">
         <button type="button" class="navbar-toggle collapsed" (click)="isCollapsed = !isCollapsed" aria-expanded="false">
           <span class="sr-only">Toggle navigation</span>
@@ -16,30 +16,112 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" [collapse]=isCollapsed>
       <ul class="nav navbar-nav">
-        <li><a [routerLink]="['/about']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">About</a></li>
-        <li><a [routerLink]="['/donors']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">Add Donors</a></li>
-        <li><a [routerLink]="['/consumers']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">Add Candidates</a></li>
-        <li><a [routerLink]="['/view-candidates']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">View All Candidates</a></li>
-        <li><a [routerLink]="['/contact']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">Contact</a></li>
-        <li><a [routerLink]="['/manage']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">Manage</a></li>
+        
 
+
+        <li>
+          <ng-template ngIf="true">
+            <a><button mat-button [matMenuTriggerFor]="about"
+            #matMenuTrigger="matMenuTrigger" 
+            (mouseenter)="matMenuTrigger.openMenu()" 
+            >About Us<span class="caret"></span></button></a>
+            <mat-menu #about="matMenu"   [overlapTrigger]="false">
+              <div (mouseleave)="matMenuTrigger.closeMenu()">
+                <button mat-menu-item ="donors" [routerLink]="['/donors']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }"> Main Purpose</button>
+                <button mat-menu-item ="currentYearDonors">Main Director</button>
+              <button mat-menu-item ="lastYearDonors">Managers</button>
+              <button mat-menu-item ="totalDonors">Developers</button>
+                </div>
+            </mat-menu>
+          </ng-template>
+        </li>
+
+
+        <li>
+          <ng-template ngIf="true">
+            <a><button mat-button [matMenuTriggerFor]="donors"
+            #matMenuTrigger="matMenuTrigger" 
+            (mouseenter)="matMenuTrigger.openMenu()" 
+            >Donors<span class="caret"></span></button></a>
+            <mat-menu #donors="matMenu"   [overlapTrigger]="false">
+              <div (mouseleave)="matMenuTrigger.closeMenu()">
+                <button mat-menu-item ="donors" [routerLink]="['/donors']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">Add me as a donors</button>
+              <button mat-menu-item ="currentYearDonors">Current year donors</button>
+              <button mat-menu-item ="lastYearDonors">Last year donors</button>
+              <button mat-menu-item ="totalDonors">Total donors</button>
+                </div>
+            </mat-menu>
+          </ng-template>
+        </li>
+
+
+            
+                <li>
+                  <ng-template ngIf="true">
+                    <a><button mat-button [matMenuTriggerFor]="candidates"
+                    #matMenuTrigger="matMenuTrigger" 
+                    (mouseenter)="matMenuTrigger.openMenu()" 
+                    >Candidates<span class="caret"></span></button></a>
+                    <mat-menu #candidates="matMenu"   [overlapTrigger]="false">
+                      <div (mouseleave)="matMenuTrigger.closeMenu()">
+                        <button mat-menu-item ="addme" [routerLink]="['/addme']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">Add Me</button>
+                        <button mat-menu-item ="amphibians">Granging Information</button>
+                        <button mat-menu-item ="reptiles">Not Granted List</button>
+                        <button mat-menu-item ="reptiles">Granted List</button>        
+                      </div>
+                    </mat-menu>
+                  </ng-template>
+                </li>
+
+                <li>
+                  <ng-template ngIf="true">
+                    <a><button mat-button [matMenuTriggerFor]="manage"
+                    #matMenuTrigger="matMenuTrigger" 
+                    (mouseenter)="matMenuTrigger.openMenu()" 
+                    >Manage<span class="caret"></span></button></a>
+                    <mat-menu #manage="matMenu"   [overlapTrigger]="false">
+                      <div (mouseleave)="matMenuTrigger.closeMenu()">
+                        <button mat-menu-item ="manage" [routerLink]="['/manage']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">Manage Grant</button>
+                        <button mat-menu-item ="amphibians">Manage Donors</button>
+                        <button mat-menu-item ="reptiles">Manage Candidates</button>
+                        <button mat-menu-item ="reptiles">Manage Edit/Delete</button>        
+                      </div>
+                    </mat-menu>
+                  </ng-template>
+                </li>
 
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a [routerLink]="['/signup']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">Sign
+        <li id="signup"><a [routerLink]="['/signup']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">Sign
             up</a></li>
 
-        <li *ngIf="!authenticatedName"><a [routerLink]="['/login']" [routerLinkActive]="['active']"
+        <li id="login" *ngIf="!authenticatedName"><a [routerLink]="['/login']" [routerLinkActive]="['active']"
             [routerLinkActiveOptions]="{ exact: true }">Login</a></li>
 
 
-        <li *ngIf="authenticatedName" class="dropdown" dropdown>
-          <a href="javascript:void(0)" dropdownToggle class="dropdown-toggle">{{authenticatedName}}<span class="caret"></span></a>
-          <ul *dropdownMenu class="dropdown-menu" role="menu">
-            <li><button (click)="logout()" class="btn btn-warning">Logout({{authenticatedName}})</button></li>
-          </ul>
-        </li>
+            <li *ngIf="authenticatedName">
+              <ng-template ngIf="true">
+                <a><button mat-button [matMenuTriggerFor]="authName"
+                #matMenuTrigger="matMenuTrigger" 
+                (mouseenter)="matMenuTrigger.openMenu()" 
+                >{{authenticatedName}}<span class="caret"></span></button></a>
+                <mat-menu #authName="matMenu"   [overlapTrigger]="false">
+                  <div (mouseleave)="matMenuTrigger.closeMenu()">
+                    <button (click)="logout()" class="btn btn-warning">Logout({{authenticatedName}})</button>   
+                 
+                 
+                  </div>
+                </mat-menu>
+              </ng-template>
+            </li>
+
+
+
+
+
+
+
 
       </ul>
     </div><!-- /.navbar-collapse -->

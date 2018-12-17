@@ -1,10 +1,20 @@
 
-
 #fullNameInNavBar{
-    margin-top: 8px;
+margin-top: -8px;
 }
 p {
-    font-family: Lato;
-  }
- 
+font-family: Lato;
+}
 
+.navbar{
+z-index: 1;
+}
+#home{
+margin-top: 8px;
+}
+#signup{
+margin-top: 8px;
+}
+#login{
+  margin-top: 8px;
+}
