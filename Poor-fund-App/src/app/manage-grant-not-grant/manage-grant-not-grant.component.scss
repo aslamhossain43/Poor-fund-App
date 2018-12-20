@@ -1,0 +1,39 @@
+
+// FOR NG MATERIAL 
+// form field
+.container-fluid {
+    padding:1.2em;
+    margin-top: 1%;
+   margin-bottom: 1%;
+    width:50%;
+    margin-left:25%;
+    height:100%;
+  }
+  
+  .formDiv {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .formDiv > * {
+    width: 100%;
+  }
+  
+  #submitButton{
+    margin-left: 42%;
+  }
+  #inputFile{
+    width: 100%;
+  }
+  mat-option{
+    text-align: center;
+  }
+  #headingP{
+    text-align: center;
+    font-size: 12px;
+   width: 100%;
+  }
+  #fileSelectButton{
+    width: 100%;
+  padding: 2%;
+  }

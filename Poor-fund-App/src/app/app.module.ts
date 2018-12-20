@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
-import { DonorsComponent } from './donors/donors.component';
 import { ConsumersComponent } from './consumers/consumers.component';
 import { ContactComponent } from './contact/contact.component';
 import { ManageComponent } from './manage/manage.component';
@@ -30,16 +29,23 @@ import { ConsumerService } from './consumers/consumers.consumer-service';
 // FOR MATERIAL
 import 'hammerjs';
 import { NgMaterialModule } from './app.material';
-import { from } from 'rxjs';
 import { ViewCandidatesComponent } from './view-candidates/view-candidates.component';
 import { ViewCandidateService } from './view-candidates/view-candidates.service';
-
+import { ManageGrantNotGrantComponent } from './manage-grant-not-grant/manage-grant-not-grant.component';
+import { ManageGrantNotGrantService } from './manage-grant-not-grant/manage-grant-not-grant.service';
+import { GrantedListComponent } from './granted-list/granted-list.component';
+import { NotGrantedListComponent } from './not-granted-list/not-granted-list.component';
+import { GrantingInformationComponent } from './granting-information/granting-information.component';
+import { AddMeAsDonorsComponent } from './add-me-as-donors/add-me-as-donors.component';
+import { CurrentYearDonorsComponent } from './current-year-donors/current-year-donors.component';
+import { LastYearDonorsComponent } from './last-year-donors/last-year-donors.component';
+import { TotalDonorsComponent } from './total-donors/total-donors.component';
+import { DonorsGrantingInformationComponent } from './donors-granting-information/donors-granting-information.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AboutComponent,
-    DonorsComponent,
     ConsumersComponent,
     ContactComponent,
     ManageComponent,
@@ -48,7 +54,16 @@ import { ViewCandidateService } from './view-candidates/view-candidates.service'
     SignupComponent,
     EmailComponent,
     MembersComponent,
-    ViewCandidatesComponent
+    ViewCandidatesComponent,
+    ManageGrantNotGrantComponent,
+    GrantedListComponent,
+    NotGrantedListComponent,
+    GrantingInformationComponent,
+    AddMeAsDonorsComponent,
+    CurrentYearDonorsComponent,
+    LastYearDonorsComponent,
+    TotalDonorsComponent,
+    DonorsGrantingInformationComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +83,8 @@ import { ViewCandidateService } from './view-candidates/view-candidates.service'
     // FOR FORM MODULE
     ReactiveFormsModule
   ],
-  providers: [AuthGuard, AngularFireAuth, UploadFileService, ConsumerService, ViewCandidateService],
+  providers: [AuthGuard, AngularFireAuth, UploadFileService, ConsumerService, ViewCandidateService
+  , ManageGrantNotGrantService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

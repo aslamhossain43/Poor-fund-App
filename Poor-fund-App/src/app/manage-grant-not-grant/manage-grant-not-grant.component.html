@@ -1,0 +1,55 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-ms-10 col-ms-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
+      <mat-progress-bar *ngIf="msg" mode="indeterminate"></mat-progress-bar>
+      <br>
+    
+      <form class="form" name="biodataForm" [formGroup]="biodataForm">
+        <div>
+          <p id="headingP">(1)Upload your proved image of candidate 
+          </p>
+        </div>
+
+       <br>
+        <div id="fileSelectButton" class="btn btn-primary">
+          <input type="file" required [formControl]="selectedProvedFileControl" (change)="selectProvedFile($event)"
+            [(ngModel)]="grantNotGrant.selectedProvedFile">
+        </div>
+        <br><br>
+       
+        <div class="formDiv">
+        <mat-form-field>
+          <input matInput placeholder="Grant-not-grant-id" required type="text" autocomplete="off"
+            [(ngModel)]="grantNotGrant.grantNotGrantId" [formControl]="grantNotGrantIdFormControl">
+          <mat-error *ngIf="grantNotGrantIdFormControl.invalid">{{getRequiredErrorMessage('grantNotGrantId')}}</mat-error>
+        </mat-form-field>
+        </div>
+        <br>
+        <div class="formDiv">
+          <mat-form-field>
+            <mat-select matInput placeholder="Select a status" [(ngModel)]="grantNotGrant.status" name="status" required
+              [formControl]="statusFormControl">
+              <mat-option value="Granted">Granted</mat-option>
+              <mat-option value="Not-Granted">Not-Granted</mat-option>
+
+            </mat-select>
+            <mat-error *ngIf="statusFormControl.invalid">{{getRequiredErrorMessage('status')}}</mat-error>
+
+          </mat-form-field>
+
+        </div>
+
+        <br>
+        <button id="submitButton" mat-raised-button color="primary" class="submit-button"
+         [disabled]="!( grantNotGrant.selectedProvedFile && grantNotGrant.status && grantNotGrant.grantNotGrantId)"
+          (click)="addGrantNotGrant()">submit</button>
+      </form>
+
+
+
+
+
+    </div>
+  </div>
+</div>
