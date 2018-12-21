@@ -45,9 +45,35 @@
          [disabled]="!( grantNotGrant.selectedProvedFile && grantNotGrant.status && grantNotGrant.grantNotGrantId)"
           (click)="addGrantNotGrant()">submit</button>
       </form>
+      <hr>
 
 
+ <div *ngFor="let c of allCandidates">
+                <div class=" col-sm-4  col-md-4 col-lg-4">
+                    
+                    <div class="thumbnail">
+                        <p>Apply Date : {{c.lastModifiedDate}}</p>
+                        <p>ID : {{c.id}}</p>
+                        <p>Candidate<span class="caret"></span></p>
+                      <img src="assets/client-images/{{c.piCode}}.jpg">
+                      <p>Application<span class="caret"></span></p>
+                      <img src="assets/client-images/{{c.apiCode}}.jpg">
+                        
+                        <div class="caption">
+                            <p>Details Address<span class="caret"></span></p>
+                           <p>Name : {{c.name}}</p>
+                           <p>Country : {{c.country}}</p>
+                           <p>Zela : {{c.zela}}</p>
+                           <p>Upozela : {{c.upozela}}</p>
+                           <p>Union : {{c.union}}</p>
+                           <p>Work : {{c.work}}</p>
+                           <p>Contact : {{c.contact}}</p>
+                           <p>bKash : {{c.bkash}}</p>
+                           </div>
 
+                    </div>
+                    </div>
+                </div>
 
 
     </div>

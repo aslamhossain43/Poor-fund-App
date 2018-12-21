@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Grantnotgrant } from './manage-grant-not-grant';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { ManageGrantNotGrantService } from './manage-grant-not-grant.service';
+import { AllCandidates } from './manage-grant-not-grant.all-candidates';
 
 @Component({
   selector: 'app-manage-grant-not-grant',
@@ -16,7 +17,7 @@ export class ManageGrantNotGrantComponent implements OnInit {
   currentProvedFiles: File;
   // FOR MODEL
   grantNotGrant = new Grantnotgrant();
-
+  allCandidates: AllCandidates[];
   // FORM FIELD CONTROL
   selectedProvedFileControl = new FormControl('', [Validators.required]);
    grantNotGrantIdFormControl = new FormControl('', [Validators.required]);
@@ -33,7 +34,8 @@ export class ManageGrantNotGrantComponent implements OnInit {
   }
   constructor(private grantNotGrantService: ManageGrantNotGrantService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.getAllCandidates();
   }
 // FOR FILE
 selectProvedFile(event) {
@@ -54,7 +56,7 @@ this.selectedProvedFiles = event.target.files;
           this.msg = '';
         }
       }, (error) => {
-        alert('Fail operation ! ,please select valid image');
+        alert('Fail operation ! ,please insert valid value !!!');
         this.msg = '';
         this.reset();
       });
@@ -66,7 +68,16 @@ this.selectedProvedFiles = event.target.files;
     this.grantNotGrant.grantNotGrantId = null;
     this.grantNotGrant.status = null;
   }
+// GET CANDIDATES
+getAllCandidates(): void {
+  this.grantNotGrantService.getAllCandidatesList()
+  .subscribe((allCandidates) => {
+    this.allCandidates = allCandidates;
+  },
+  (error) => {
+  });
 
+  }
 
 
 

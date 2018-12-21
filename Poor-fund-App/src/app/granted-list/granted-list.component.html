@@ -6,13 +6,14 @@
                 <div class=" col-sm-4  col-md-4 col-lg-4">
                     
                     <div class="thumbnail">
-
+                        <p>Apply Date : {{gl.createdDate}}</p>
                         <p>Candidate<span class="caret"></span></p>
                       <img src="assets/client-images/{{gl.piCode}}.jpg">
                       <p>Application<span class="caret"></span></p>
                       <img src="assets/client-images/{{gl.apiCode}}.jpg">
                         
                         <div class="caption">
+                            <p>Details Address<span class="caret"></span></p>
                            <p>Name : {{gl.name}}</p>
                            <p>Country : {{gl.country}}</p>
                            <p>Zela : {{gl.zela}}</p>
@@ -21,8 +22,9 @@
                            <p>Work : {{gl.work}}</p>
                            <p>Contact : {{gl.contact}}</p>
                            <p>bKash : {{gl.bkash}}</p>
-                           <p>Apply date : {{gl.createdDate}}</p>
-                           <img *ngIf="gl.prCode" id="provedImg" src="assets/granted-notgranted-images/{{gl.prCode}}.jpg">
+                           <p>Granted Date : {{gl.lastModifiedDate}}</p>
+                           <img *ngIf="gl.prCode && gl.status===granted" id="provedImg" src="assets/images/granted.jpg">
+                           <img *ngIf="gl.prCode && gl.status===granted" id="provedImg" src="assets/granted-notgranted-images/{{gl.prCode}}.jpg">
                         
                         </div>
 
