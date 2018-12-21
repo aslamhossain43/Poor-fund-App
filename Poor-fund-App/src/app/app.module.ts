@@ -41,6 +41,7 @@ import { CurrentYearDonorsComponent } from './current-year-donors/current-year-d
 import { LastYearDonorsComponent } from './last-year-donors/last-year-donors.component';
 import { TotalDonorsComponent } from './total-donors/total-donors.component';
 import { DonorsGrantingInformationComponent } from './donors-granting-information/donors-granting-information.component';
+import { GrantedListService } from './granted-list/granted-list.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -84,7 +85,7 @@ import { DonorsGrantingInformationComponent } from './donors-granting-informatio
     ReactiveFormsModule
   ],
   providers: [AuthGuard, AngularFireAuth, UploadFileService, ConsumerService, ViewCandidateService
-  , ManageGrantNotGrantService],
+  , ManageGrantNotGrantService, GrantedListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

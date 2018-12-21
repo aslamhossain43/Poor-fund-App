@@ -1,20 +1,36 @@
 <div class="container-fluid">
-  <div class="row">
-<div class="col-ms-10 col-ms-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
- <div class="row">
-  <div class=" col-sm-4  col-md-4 col-lg-4">
-    <div class="thumbnail">
-       
-        <div class="caption">
-            
-           
-           
-          
+    <div class="row">
+        <div class="col-ms-10 col-ms-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
+            <div class="row">
+                <div *ngFor="let gl of grantedList">
+                <div class=" col-sm-4  col-md-4 col-lg-4">
+                    
+                    <div class="thumbnail">
+
+                        <p>Candidate<span class="caret"></span></p>
+                      <img src="assets/client-images/{{gl.piCode}}.jpg">
+                      <p>Application<span class="caret"></span></p>
+                      <img src="assets/client-images/{{gl.apiCode}}.jpg">
+                        
+                        <div class="caption">
+                           <p>Name : {{gl.name}}</p>
+                           <p>Country : {{gl.country}}</p>
+                           <p>Zela : {{gl.zela}}</p>
+                           <p>Upozela : {{gl.upozela}}</p>
+                           <p>Union : {{gl.union}}</p>
+                           <p>Work : {{gl.work}}</p>
+                           <p>Contact : {{gl.contact}}</p>
+                           <p>bKash : {{gl.bkash}}</p>
+                           <p>Apply date : {{gl.createdDate}}</p>
+                           <img *ngIf="gl.prCode" id="provedImg" src="assets/granted-notgranted-images/{{gl.prCode}}.jpg">
+                        
+                        </div>
+
+                    </div>
+                    </div>
+                </div>
+               
+            </div>
         </div>
-     
     </div>
-</div>
- </div> 
-</div>
-  </div>
 </div>
