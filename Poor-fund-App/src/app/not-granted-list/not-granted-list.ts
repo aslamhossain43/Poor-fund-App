@@ -1,5 +1,5 @@
-export class AllCandidates {
- id: string;
+export class NotGrantedList {
+id: string;
 piCode: string;
 apiCode: string;
 name: string;
@@ -10,6 +10,7 @@ union: string;
 work: string;
 contact: string;
 bkash: string;
+status: string;
 createdDate: string;
 lastModifiedDate: string;
 }

@@ -86,9 +86,12 @@
                   class="caret"></span></button></a>
             <mat-menu #manage="matMenu" [overlapTrigger]="false">
               <div (mouseleave)="matMenuTrigger.closeMenu()">
-                <button mat-menu-item="manage-grant-not-grant" [routerLink]="['/manage-grant-not-grant']"
-                  [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">Manage Grant Not Grant</button>
-                <button mat-menu-item="amphibians">Manage Donors</button>
+                <button mat-menu-item="manage-grant" [routerLink]="['/manage-grant']"
+                  [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">Manage Grant List</button>
+                  <button mat-menu-item="manage-notGrant" [routerLink]="['/manage-notGrant']"
+                  [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">Manage Not Grant List</button>
+               
+                  <button mat-menu-item="amphibians">Manage Donors</button>
                 <button mat-menu-item="reptiles">Manage Candidates</button>
                 <button mat-menu-item="reptiles">Manage Edit/Delete</button>
               </div>

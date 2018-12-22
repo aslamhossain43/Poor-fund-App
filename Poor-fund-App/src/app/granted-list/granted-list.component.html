@@ -3,7 +3,7 @@
         <div class="col-ms-10 col-ms-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
             <div class="row">
                 <div *ngFor="let gl of grantedList">
-                <div class=" col-sm-4  col-md-4 col-lg-4">
+                <div *ngIf="gl.prCode && gl.status===granted" class=" col-sm-4  col-md-4 col-lg-4">
                     
                     <div class="thumbnail">
                         <p>Apply Date : {{gl.createdDate}}</p>
@@ -24,7 +24,7 @@
                            <p>bKash : {{gl.bkash}}</p>
                            <p>Granted Date : {{gl.lastModifiedDate}}</p>
                            <img *ngIf="gl.prCode && gl.status===granted" id="provedImg" src="assets/images/granted.jpg">
-                           <img *ngIf="gl.prCode && gl.status===granted" id="provedImg" src="assets/granted-notgranted-images/{{gl.prCode}}.jpg">
+                           <img *ngIf="gl.prCode && gl.status===granted" id="provedImg" src="assets/granted-images/{{gl.prCode}}.jpg">
                         
                         </div>
 

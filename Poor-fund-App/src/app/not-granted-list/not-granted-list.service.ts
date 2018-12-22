@@ -1,14 +1,14 @@
 import { Http, Response } from '@angular/http';
-import { GrantedList } from './granted-list';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { NotGrantedList } from './not-granted-list';
 @Injectable()
-export class GrantedListService {
+export class NotGrantedListService {
 
     constructor(private http: Http) { }
 
-    getGrantedList(): Observable<GrantedList[]> {
+    getNotGrantedList(): Observable<NotGrantedList[]> {
         return this.http.get('http://localhost:8080/gl/getAllList')
             .pipe(map((response: Response) => response.json()),
                 catchError(this.handleError));

@@ -14,25 +14,23 @@
        <br>
         <div id="fileSelectButton" class="btn btn-primary">
           <input type="file" required [formControl]="selectedProvedFileControl" (change)="selectProvedFile($event)"
-            [(ngModel)]="grantNotGrant.selectedProvedFile">
+            [(ngModel)]="grant.selectedProvedFile">
         </div>
         <br><br>
        
         <div class="formDiv">
         <mat-form-field>
-          <input matInput placeholder="Grant-not-grant-id" required type="text" autocomplete="off"
-            [(ngModel)]="grantNotGrant.grantNotGrantId" [formControl]="grantNotGrantIdFormControl">
-          <mat-error *ngIf="grantNotGrantIdFormControl.invalid">{{getRequiredErrorMessage('grantNotGrantId')}}</mat-error>
+          <input matInput placeholder="Grant-id" required type="text" autocomplete="off"
+            [(ngModel)]="grant.grantId" [formControl]="grantIdFormControl">
+          <mat-error *ngIf="grantIdFormControl.invalid">{{getRequiredErrorMessage('grantId')}}</mat-error>
         </mat-form-field>
         </div>
         <br>
         <div class="formDiv">
           <mat-form-field>
-            <mat-select matInput placeholder="Select a status" [(ngModel)]="grantNotGrant.status" name="status" required
+            <mat-select matInput placeholder="Select a status" [(ngModel)]="grant.status" name="status" required
               [formControl]="statusFormControl">
               <mat-option value="Granted">Granted</mat-option>
-              <mat-option value="Not-Granted">Not-Granted</mat-option>
-
             </mat-select>
             <mat-error *ngIf="statusFormControl.invalid">{{getRequiredErrorMessage('status')}}</mat-error>
 
@@ -42,14 +40,14 @@
 
         <br>
         <button id="submitButton" mat-raised-button color="primary" class="submit-button"
-         [disabled]="!( grantNotGrant.selectedProvedFile && grantNotGrant.status && grantNotGrant.grantNotGrantId)"
-          (click)="addGrantNotGrant()">submit</button>
+         [disabled]="!( grant.selectedProvedFile && grant.status && grant.grantId)"
+          (click)="addGrant()">submit</button>
       </form>
       <hr>
 
 
  <div *ngFor="let c of allCandidates">
-                <div class=" col-sm-4  col-md-4 col-lg-4">
+                <div *ngIf="!c.status" class=" col-sm-4  col-md-4 col-lg-4">
                     
                     <div class="thumbnail">
                         <p>Apply Date : {{c.lastModifiedDate}}</p>

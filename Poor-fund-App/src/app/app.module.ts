@@ -31,8 +31,6 @@ import 'hammerjs';
 import { NgMaterialModule } from './app.material';
 import { ViewCandidatesComponent } from './view-candidates/view-candidates.component';
 import { ViewCandidateService } from './view-candidates/view-candidates.service';
-import { ManageGrantNotGrantComponent } from './manage-grant-not-grant/manage-grant-not-grant.component';
-import { ManageGrantNotGrantService } from './manage-grant-not-grant/manage-grant-not-grant.service';
 import { GrantedListComponent } from './granted-list/granted-list.component';
 import { NotGrantedListComponent } from './not-granted-list/not-granted-list.component';
 import { GrantingInformationComponent } from './granting-information/granting-information.component';
@@ -42,6 +40,11 @@ import { LastYearDonorsComponent } from './last-year-donors/last-year-donors.com
 import { TotalDonorsComponent } from './total-donors/total-donors.component';
 import { DonorsGrantingInformationComponent } from './donors-granting-information/donors-granting-information.component';
 import { GrantedListService } from './granted-list/granted-list.service';
+import { NotGrantedListService } from './not-granted-list/not-granted-list.service';
+import { ManageGrantedListComponent } from './manage-granted-list/manage-granted-list.component';
+import { ManageGrantedService } from './manage-granted-list/manage-granted-list.service';
+import { ManageNotGrantedListComponent } from './manage-not-granted-list/manage-not-granted-list.component';
+import { ManageNotGrantedListService } from './manage-not-granted-list/manage-not-granted-list.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +59,7 @@ import { GrantedListService } from './granted-list/granted-list.service';
     EmailComponent,
     MembersComponent,
     ViewCandidatesComponent,
-    ManageGrantNotGrantComponent,
+    ManageGrantedListComponent,
     GrantedListComponent,
     NotGrantedListComponent,
     GrantingInformationComponent,
@@ -64,7 +67,9 @@ import { GrantedListService } from './granted-list/granted-list.service';
     CurrentYearDonorsComponent,
     LastYearDonorsComponent,
     TotalDonorsComponent,
-    DonorsGrantingInformationComponent
+    DonorsGrantingInformationComponent,
+    ManageGrantedListComponent,
+    ManageNotGrantedListComponent
   ],
   imports: [
     BrowserModule,
@@ -85,7 +90,7 @@ import { GrantedListService } from './granted-list/granted-list.service';
     ReactiveFormsModule
   ],
   providers: [AuthGuard, AngularFireAuth, UploadFileService, ConsumerService, ViewCandidateService
-  , ManageGrantNotGrantService, GrantedListService],
+  , ManageGrantedService, GrantedListService, NotGrantedListService, ManageNotGrantedListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -10,7 +10,6 @@ import { GrantedListService } from './granted-list.service';
 export class GrantedListComponent implements OnInit {
 grantedList: GrantedList[];
 granted = 'Granted';
-notGranted = 'Not-Granted';
   constructor(private grantedListService: GrantedListService) { }
 
   ngOnInit(): void {
