@@ -8,9 +8,9 @@
       <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
 
         <input id="textCenter" type="text" placeholder="Email address.." (ngModel)="email" name="email" class="txt"
-          required>
+          required autocomplete="off">
         <input id="textCenter" type="password" placeholder="Password" (ngModel)="password" name="password" class="txt"
-          required>
+          required autocomplete="off">
 
 
         <button id="btnForCreateAccount" type="submit" [disabled]="!formData.valid" class="basic-btn">Create my account</button>

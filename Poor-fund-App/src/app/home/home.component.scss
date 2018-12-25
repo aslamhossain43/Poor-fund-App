@@ -1,4 +1,17 @@
+mat-card{
+  margin-top: 15px;
+}
+mat-card-content{
+  font-size: 20px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+#footer{
+  margin-top: 20px;
+  background: black;
+  margin-bottom: 20px;
+}
 
-#homeContainer{
-  background-color: aliceblue;
+#footer p{
+  text-align: center;
+  color: white;
 }

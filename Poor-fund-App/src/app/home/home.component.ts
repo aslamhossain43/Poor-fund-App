@@ -5,12 +5,12 @@ import { moveIn } from '../router.animations';
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  animations: [moveIn()]
+  // animations: [moveIn()]
 })
 export class HomeComponent implements OnInit {
 
   constructor() { }
-@HostBinding('@moveIn')
+// @HostBinding('@moveIn')
   ngOnInit() {
   }
 

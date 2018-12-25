@@ -1,14 +1,17 @@
-// FOR BOOTSTRAP
-@import '~bootstrap/dist/css/bootstrap.min.css';
+// FOR BOOTSTRAP 
+ @import '~bootstrap/dist/css/bootstrap.min.css';
+ // FONT AWESOME
+ $fa-font-path: '~font-awesome/fonts';
+@import '~font-awesome/scss/font-awesome.scss';
 // FOR NG MATERIAL
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+ @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 //@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
-//@import "~@angular/material/prebuilt-themes/pink-bluegrey.css";
-//@import "~@angular/material/prebuilt-themes/purple-green.css";
+//@import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
+//@import '~@angular/material/prebuilt-themes/purple-green.css';
   // FOR GLOBAL PAGE STYLE
 html,body {
   background: white;
-    margin-top: 30px;
+    margin-top: 2%;
     width: 100%;
     height: 100%;
     position: absolute;

@@ -6,8 +6,10 @@
       
         <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
       
-          <input id="textCenter" type="text" placeholder="Email address.." (ngModel)="email" name="email" class="txt"  required>
-          <input id="textCenter" type="password" placeholder="Password" (ngModel)="password" name="password"  class="txt" required>
+          <input id="textCenter" type="text" placeholder="Email address.." (ngModel)="email" name="email" class="txt"  
+          required autocomplete="off">
+          <input id="textCenter" type="password" placeholder="Password" (ngModel)="password" name="password"  class="txt" 
+          required autocomplete="off">
       
           <button  type="submit" [disabled]="!formData.valid" class="basic-btn">Log in</button>
           <a routerLink="/signup" class="alc">Don't have an account?</a>

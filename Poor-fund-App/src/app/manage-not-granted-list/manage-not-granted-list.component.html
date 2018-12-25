@@ -20,6 +20,7 @@
             <mat-select matInput placeholder="Select a status" [(ngModel)]="notGrant.status" name="status" required
               [formControl]="statusFormControl">
               <mat-option value="Not-Granted">Not-Granted</mat-option>
+              <mat-option value="NULL">NULL</mat-option>
             </mat-select>
             <mat-error *ngIf="statusFormControl.invalid">{{getRequiredErrorMessage('status')}}</mat-error>
 

@@ -11,5 +11,4 @@ export class GrantingInformationComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

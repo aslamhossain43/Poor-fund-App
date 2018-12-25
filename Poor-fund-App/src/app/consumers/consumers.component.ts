@@ -115,7 +115,7 @@ export class ConsumersComponent implements OnInit {
       .subscribe(response => {
         if (response.statusText === 'OK') {
           alert('Your operation has been completed successfully !');
-          this.msg = 'onProgressBar';
+          this.msg = 'offProgressBar';
         }
       },
         (error) => {
