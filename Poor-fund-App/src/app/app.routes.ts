@@ -21,6 +21,10 @@ import { TotalDonorsComponent } from './total-donors/total-donors.component';
 import { DonorsGrantingInformationComponent } from './donors-granting-information/donors-granting-information.component';
 import { ManageGrantedListComponent } from './manage-granted-list/manage-granted-list.component';
 import { ManageNotGrantedListComponent } from './manage-not-granted-list/manage-not-granted-list.component';
+import { CurrentYearGranredListComponent } from './current-year-granred-list/current-year-granred-list.component';
+import { LastYearGrantedListComponent } from './last-year-granted-list/last-year-granted-list.component';
+import { CurrentYearNotGrantedListComponent } from './current-year-not-granted-list/current-year-not-granted-list.component';
+import { LastYearNotGrantedListComponent } from './last-year-not-granted-list/last-year-not-granted-list.component';
 export const router: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -36,7 +40,11 @@ export const router: Routes = [
 
   { path: 'grantingInformation', component: GrantingInformationComponent },
   { path: 'addme', component: ConsumersComponent },
+  { path: 'currentYearGrantedList', component: CurrentYearGranredListComponent },
+  { path: 'lastYearGrantedList', component: LastYearGrantedListComponent },
   { path: 'grantedList', component: GrantedListComponent },
+  { path: 'currentYearNotGrantedList', component: CurrentYearNotGrantedListComponent },
+  { path: 'lastYearNotGrantedList', component: LastYearNotGrantedListComponent },
   { path: 'notGrantedList', component: NotGrantedListComponent },
   { path: 'view-candidates', component: ViewCandidatesComponent },
   { path: 'contact', component: ContactComponent },

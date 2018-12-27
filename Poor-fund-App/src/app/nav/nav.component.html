@@ -70,11 +70,21 @@
                 <button mat-menu-item [routerLink]="['/grantingInformation']" [routerLinkActive]="['active']"
                   [routerLinkActiveOptions]="{ exact: true }">Granging Information</button>
                 <button mat-menu-item [routerLink]="['/addme']" [routerLinkActive]="['active']"
-                  [routerLinkActiveOptions]="{ exact: true }">Add Me</button>
+                  [routerLinkActiveOptions]="{ exact: true }">Add me as candidate</button>
+                  <button mat-menu-item [routerLink]="['/currentYearGrantedList']" [routerLinkActive]="['active']"
+                  [routerLinkActiveOptions]="{ exact: true }">Current year granted list</button>
+                  <button mat-menu-item [routerLink]="['/lastYearGrantedList']" [routerLinkActive]="['active']"
+                  [routerLinkActiveOptions]="{ exact: true }">Last year granted list</button>
+                
                 <button mat-menu-item [routerLink]="['/grantedList']" [routerLinkActive]="['active']"
-                  [routerLinkActiveOptions]="{ exact: true }">Granted List</button>
-                <button mat-menu-item [routerLink]="['/notGrantedList']" [routerLinkActive]="['active']"
-                  [routerLinkActiveOptions]="{ exact: true }">Not Granted List</button>
+                  [routerLinkActiveOptions]="{ exact: true }">Total granted list</button>
+                  <button mat-menu-item [routerLink]="['/currentYearNotGrantedList']" [routerLinkActive]="['active']"
+                  [routerLinkActiveOptions]="{ exact: true }">Current year not granted list</button>
+                  <button mat-menu-item [routerLink]="['/lastYearNotGrantedList']" [routerLinkActive]="['active']"
+                  [routerLinkActiveOptions]="{ exact: true }">Last year not granted list</button>
+                    
+                  <button mat-menu-item [routerLink]="['/notGrantedList']" [routerLinkActive]="['active']"
+                  [routerLinkActiveOptions]="{ exact: true }">Total not granted list</button>
               </div>
             </mat-menu>
           </ng-template>

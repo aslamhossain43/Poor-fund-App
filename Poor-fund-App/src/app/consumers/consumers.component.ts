@@ -10,6 +10,9 @@ import { ManageGrantedService } from '../manage-granted-list/manage-granted-list
 import { ManageNotGrantedListService } from '../manage-not-granted-list/manage-not-granted-list.service';
 import { GrantedListService } from '../granted-list/granted-list.service';
 import { NotGrantedListService } from '../not-granted-list/not-granted-list.service';
+import { CurrentYaerTotalDonorService } from '../current-year-donors/current-year-donors.service';
+import { LastYaerTotalDonorService } from '../last-year-donors/last-year-donors.service';
+import { TotalDonorService } from '../total-donors/total-donors.service';
 
 
 
@@ -47,7 +50,8 @@ export class ConsumersComponent implements OnInit {
   constructor(private uploadService: UploadFileService,
     private consumerService: ConsumerService, private router: Router, private manageGrantedListService: ManageGrantedService,
     private manageNotGrantedListService: ManageNotGrantedListService, private grantedListService: GrantedListService,
-    private notGrantedListService: NotGrantedListService) { }
+    private notGrantedListService: NotGrantedListService, private currentYearTotalDonorService: CurrentYaerTotalDonorService,
+    private lastYearTotalDonorService: LastYaerTotalDonorService, private totalDonorService: TotalDonorService) { }
 
   biodataForm: FormGroup = new FormGroup({
     name: this.nameFormControl,
@@ -102,11 +106,6 @@ export class ConsumersComponent implements OnInit {
       .subscribe(response => {
         if (response.statusText === 'OK') {
           this.addConsumers();
-          this.reset();
-          this.manageGrantedListService.getAllCandidatesList();
-          this.manageNotGrantedListService.getAllCandidatesList();
-          this.grantedListService.getGrantedList();
-          this.notGrantedListService.getNotGrantedList();
         }
       },
         (error) => {
@@ -115,10 +114,6 @@ export class ConsumersComponent implements OnInit {
           alert('Your operation is failed ! please select valid image .');
           this.msg = 'offProgressBar';
           this.reset();
-          this.manageGrantedListService.getAllCandidatesList();
-          this.manageNotGrantedListService.getAllCandidatesList();
-          this.grantedListService.getGrantedList();
-          this.manageNotGrantedListService.getAllCandidatesList();
         }
       );
   }

@@ -49,6 +49,12 @@ import { DonorService } from './add-me-as-donors/add-me-as-donors.service';
 import { TotalDonorService } from './total-donors/total-donors.service';
 import { LastYaerTotalDonorService } from './last-year-donors/last-year-donors.service';
 import { CurrentYaerTotalDonorService } from './current-year-donors/current-year-donors.service';
+import { CurrentYearGranredListComponent } from './current-year-granred-list/current-year-granred-list.component';
+import { LastYearGrantedListComponent } from './last-year-granted-list/last-year-granted-list.component';
+import { CurrentYearNotGrantedListComponent } from './current-year-not-granted-list/current-year-not-granted-list.component';
+import { LastYearNotGrantedListComponent } from './last-year-not-granted-list/last-year-not-granted-list.component';
+import { LastYearGrantedListService } from './last-year-granted-list/last-year-granted-list.service';
+import { CurrentYearGrantedListService } from './current-year-granred-list/current-year-granred-list.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,7 +79,11 @@ import { CurrentYaerTotalDonorService } from './current-year-donors/current-year
     TotalDonorsComponent,
     DonorsGrantingInformationComponent,
     ManageGrantedListComponent,
-    ManageNotGrantedListComponent
+    ManageNotGrantedListComponent,
+    CurrentYearGranredListComponent,
+    LastYearGrantedListComponent,
+    CurrentYearNotGrantedListComponent,
+    LastYearNotGrantedListComponent
   ],
   imports: [
     BrowserModule,
@@ -95,7 +105,8 @@ import { CurrentYaerTotalDonorService } from './current-year-donors/current-year
   ],
   providers: [AuthGuard, AngularFireAuth, UploadFileService, ConsumerService, ViewCandidateService
   , ManageGrantedService, GrantedListService, NotGrantedListService, ManageNotGrantedListService,
-DonorService, TotalDonorService, LastYaerTotalDonorService, CurrentYaerTotalDonorService],
+DonorService, TotalDonorService, LastYaerTotalDonorService, CurrentYaerTotalDonorService,
+LastYearGrantedListService, CurrentYearGrantedListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
