@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Donors } from '../add-me-as-donors/add-me-as-donors';
+import { TotalDonorService } from './total-donors.service';
 
 @Component({
   selector: 'app-total-donors',
@@ -6,10 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./total-donors.component.scss']
 })
 export class TotalDonorsComponent implements OnInit {
+  totalDonors: Donors[];
+  constructor(private totalDonorService: TotalDonorService) { }
 
-  constructor() { }
-
-  ngOnInit() {
+  ngOnInit(): void {
+    this.getTotalDonors();
   }
+  getTotalDonors(): void {
+    this.totalDonorService.getTotalDonors()
+      .subscribe((totalDonors) => {
+        this.totalDonors = totalDonors;
+      },
+        (error) => {
 
+        });
+  }
 }

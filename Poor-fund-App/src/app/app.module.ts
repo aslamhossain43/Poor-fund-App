@@ -45,6 +45,10 @@ import { ManageGrantedListComponent } from './manage-granted-list/manage-granted
 import { ManageGrantedService } from './manage-granted-list/manage-granted-list.service';
 import { ManageNotGrantedListComponent } from './manage-not-granted-list/manage-not-granted-list.component';
 import { ManageNotGrantedListService } from './manage-not-granted-list/manage-not-granted-list.service';
+import { DonorService } from './add-me-as-donors/add-me-as-donors.service';
+import { TotalDonorService } from './total-donors/total-donors.service';
+import { LastYaerTotalDonorService } from './last-year-donors/last-year-donors.service';
+import { CurrentYaerTotalDonorService } from './current-year-donors/current-year-donors.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -90,7 +94,8 @@ import { ManageNotGrantedListService } from './manage-not-granted-list/manage-no
     ReactiveFormsModule
   ],
   providers: [AuthGuard, AngularFireAuth, UploadFileService, ConsumerService, ViewCandidateService
-  , ManageGrantedService, GrantedListService, NotGrantedListService, ManageNotGrantedListService],
+  , ManageGrantedService, GrantedListService, NotGrantedListService, ManageNotGrantedListService,
+DonorService, TotalDonorService, LastYaerTotalDonorService, CurrentYaerTotalDonorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

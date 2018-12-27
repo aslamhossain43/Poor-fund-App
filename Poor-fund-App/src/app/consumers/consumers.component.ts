@@ -6,6 +6,10 @@ import { Consumers } from './consumers';
 import { ConsumerService } from './consumers.consumer-service';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ManageGrantedService } from '../manage-granted-list/manage-granted-list.service';
+import { ManageNotGrantedListService } from '../manage-not-granted-list/manage-not-granted-list.service';
+import { GrantedListService } from '../granted-list/granted-list.service';
+import { NotGrantedListService } from '../not-granted-list/not-granted-list.service';
 
 
 
@@ -39,7 +43,11 @@ export class ConsumersComponent implements OnInit {
   bkashFormControl = new FormControl('', [Validators.required]);
   selectedPiFileControl = new FormControl('', [Validators.required]);
   selectedApiFileControl = new FormControl('', [Validators.required]);
-
+  // FOR CONSTRUCTOR
+  constructor(private uploadService: UploadFileService,
+    private consumerService: ConsumerService, private router: Router, private manageGrantedListService: ManageGrantedService,
+    private manageNotGrantedListService: ManageNotGrantedListService, private grantedListService: GrantedListService,
+    private notGrantedListService: NotGrantedListService) { }
 
   biodataForm: FormGroup = new FormGroup({
     name: this.nameFormControl,
@@ -70,8 +78,6 @@ export class ConsumersComponent implements OnInit {
   getRequiredErrorMessageForNumber(field) {
     return this.biodataForm.get(field).hasError('required') ? 'You must enter valid ' + field + ' number' : '';
   }
-  constructor(private uploadService: UploadFileService,
-    private consumerService: ConsumerService, private router: Router) { }
   // FOR BINDING ANIMATION
   @HostBinding('@consumerMoveIn')
   // NG LIFE CYCLE
@@ -96,6 +102,11 @@ export class ConsumersComponent implements OnInit {
       .subscribe(response => {
         if (response.statusText === 'OK') {
           this.addConsumers();
+          this.reset();
+          this.manageGrantedListService.getAllCandidatesList();
+          this.manageNotGrantedListService.getAllCandidatesList();
+          this.grantedListService.getGrantedList();
+          this.notGrantedListService.getNotGrantedList();
         }
       },
         (error) => {
@@ -104,17 +115,22 @@ export class ConsumersComponent implements OnInit {
           alert('Your operation is failed ! please select valid image .');
           this.msg = 'offProgressBar';
           this.reset();
+          this.manageGrantedListService.getAllCandidatesList();
+          this.manageNotGrantedListService.getAllCandidatesList();
+          this.grantedListService.getGrantedList();
+          this.manageNotGrantedListService.getAllCandidatesList();
         }
       );
   }
 
   // FOR CONSUMERS
   // ADD CONSUMERS
-  addConsumers() {
+  addConsumers(): void {
     this.consumerService.addConsumers(this.consumer)
       .subscribe(response => {
         if (response.statusText === 'OK') {
           alert('Your operation has been completed successfully !');
+          this.reset();
           this.msg = 'offProgressBar';
         }
       },
