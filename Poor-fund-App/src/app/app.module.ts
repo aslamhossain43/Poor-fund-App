@@ -55,6 +55,8 @@ import { CurrentYearNotGrantedListComponent } from './current-year-not-granted-l
 import { LastYearNotGrantedListComponent } from './last-year-not-granted-list/last-year-not-granted-list.component';
 import { LastYearGrantedListService } from './last-year-granted-list/last-year-granted-list.service';
 import { CurrentYearGrantedListService } from './current-year-granred-list/current-year-granred-list.service';
+import { LastYearNotGrantedListService } from './last-year-not-granted-list/last-year-not-granted-list.service';
+import { CurrentYearNotGrantedListService } from './current-year-not-granted-list/current-year-not-granted-list.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -106,7 +108,8 @@ import { CurrentYearGrantedListService } from './current-year-granred-list/curre
   providers: [AuthGuard, AngularFireAuth, UploadFileService, ConsumerService, ViewCandidateService
   , ManageGrantedService, GrantedListService, NotGrantedListService, ManageNotGrantedListService,
 DonorService, TotalDonorService, LastYaerTotalDonorService, CurrentYaerTotalDonorService,
-LastYearGrantedListService, CurrentYearGrantedListService],
+LastYearGrantedListService, CurrentYearGrantedListService, LastYearNotGrantedListService
+, CurrentYearNotGrantedListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

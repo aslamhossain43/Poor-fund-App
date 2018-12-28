@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CurrentYearNotGrantedList } from './current-year-not-granted-list';
+import { CurrentYearNotGrantedListService } from './current-year-not-granted-list.service';
 
 @Component({
   selector: 'app-current-year-not-granted-list',
@@ -6,10 +8,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./current-year-not-granted-list.component.scss']
 })
 export class CurrentYearNotGrantedListComponent implements OnInit {
+  currentYearNotGrantedList: CurrentYearNotGrantedList[];
+  notGranted = 'Not-Granted';
+  constructor(private currentYearNotGrantedListService: CurrentYearNotGrantedListService) { }
 
-  constructor() { }
+  ngOnInit(): void {
+    this.getCurrentYearNotGrantedList();
+    }
 
-  ngOnInit() {
-  }
+
+
+  getCurrentYearNotGrantedList(): void {
+    this.currentYearNotGrantedListService.getCurrentYearNotGrantedList()
+    .subscribe((currenttYearNotGrantedList) => {
+      this.currentYearNotGrantedList = currenttYearNotGrantedList;
+      console.log(currenttYearNotGrantedList);
+    },
+    (error) => {
+    });
+    }
 
 }

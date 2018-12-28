@@ -1,16 +1,15 @@
-import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { LastYearGrantedList } from './last-year-granted-list';
 import { map, catchError } from 'rxjs/operators';
-
+import { CurrentYearNotGrantedList } from './current-year-not-granted-list';
 @Injectable()
-export class LastYearGrantedListService {
+export class CurrentYearNotGrantedListService {
 
     constructor(private http: Http) { }
 
-    getLastYearGrantedList(): Observable<LastYearGrantedList[]> {
-        return this.http.get('http://localhost:8080/lycl/lastYearCandidateList')
+    getCurrentYearNotGrantedList(): Observable<CurrentYearNotGrantedList[]> {
+        return this.http.get('http://localhost:8080/cycl/currentYearCandidateList')
             .pipe(map((response: Response) => response.json()),
                 catchError(this.handleError));
     }
@@ -19,3 +18,4 @@ export class LastYearGrantedListService {
     }
 
 }
+
