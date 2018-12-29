@@ -71,19 +71,19 @@
                   [routerLinkActiveOptions]="{ exact: true }">Granging Information</button>
                 <button mat-menu-item [routerLink]="['/addme']" [routerLinkActive]="['active']"
                   [routerLinkActiveOptions]="{ exact: true }">Add me as candidate</button>
-                  <button mat-menu-item [routerLink]="['/currentYearGrantedList']" [routerLinkActive]="['active']"
+                <button mat-menu-item [routerLink]="['/currentYearGrantedList']" [routerLinkActive]="['active']"
                   [routerLinkActiveOptions]="{ exact: true }">Current year granted list</button>
-                  <button mat-menu-item [routerLink]="['/lastYearGrantedList']" [routerLinkActive]="['active']"
+                <button mat-menu-item [routerLink]="['/lastYearGrantedList']" [routerLinkActive]="['active']"
                   [routerLinkActiveOptions]="{ exact: true }">Last year granted list</button>
-                
+
                 <button mat-menu-item [routerLink]="['/grantedList']" [routerLinkActive]="['active']"
                   [routerLinkActiveOptions]="{ exact: true }">Total granted list</button>
-                  <button mat-menu-item [routerLink]="['/currentYearNotGrantedList']" [routerLinkActive]="['active']"
+                <button mat-menu-item [routerLink]="['/currentYearNotGrantedList']" [routerLinkActive]="['active']"
                   [routerLinkActiveOptions]="{ exact: true }">Current year not granted list</button>
-                  <button mat-menu-item [routerLink]="['/lastYearNotGrantedList']" [routerLinkActive]="['active']"
+                <button mat-menu-item [routerLink]="['/lastYearNotGrantedList']" [routerLinkActive]="['active']"
                   [routerLinkActiveOptions]="{ exact: true }">Last year not granted list</button>
-                    
-                  <button mat-menu-item [routerLink]="['/notGrantedList']" [routerLinkActive]="['active']"
+
+                <button mat-menu-item [routerLink]="['/notGrantedList']" [routerLinkActive]="['active']"
                   [routerLinkActiveOptions]="{ exact: true }">Total not granted list</button>
               </div>
             </mat-menu>
@@ -96,15 +96,15 @@
                   class="caret"></span></button></a>
             <mat-menu #manage="matMenu" [overlapTrigger]="false">
               <div (mouseleave)="matMenuTrigger.closeMenu()">
-                <button mat-menu-item="manage-grant" [routerLink]="['/manage-grant']"
-                  [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">Manage Grant List</button>
-                  <button mat-menu-item="manage-notGrant" [routerLink]="['/manage-notGrant']"
-                  [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">Manage Not Grant List</button>
-                  <button mat-menu-item="manage-candidates" [routerLink]="['/manage-candidates']"
-                  [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">Manage Candidates</button>
-                  <button mat-menu-item="manage-donors" [routerLink]="['/manage-donors']"
-                  [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">Manage Donors</button>
-               
+                <button mat-menu-item="manage-grant" [routerLink]="['/manage-grant']" [routerLinkActive]="['active']"
+                  [routerLinkActiveOptions]="{ exact: true }">Manage Grant List</button>
+                <button mat-menu-item="manage-notGrant" [routerLink]="['/manage-notGrant']" [routerLinkActive]="['active']"
+                  [routerLinkActiveOptions]="{ exact: true }">Manage Not Grant List</button>
+                <button mat-menu-item="manage-candidates" [routerLink]="['/manage-candidates']" [routerLinkActive]="['active']"
+                  [routerLinkActiveOptions]="{ exact: true }">Manage Candidates</button>
+                <button mat-menu-item="manage-donors" [routerLink]="['/manage-donors']" [routerLinkActive]="['active']"
+                  [routerLinkActiveOptions]="{ exact: true }">Manage Donors</button>
+
               </div>
             </mat-menu>
           </ng-template>
@@ -120,7 +120,29 @@
             [routerLinkActiveOptions]="{ exact: true }">Login</a></li>
 
 
-        <li *ngIf="authenticatedName">
+
+
+
+        <li *ngIf="photoUrl">
+          <ng-template ngIf="true">
+            <a><button mat-button [matMenuTriggerFor]="authName" #matMenuTrigger="matMenuTrigger" (mouseenter)="matMenuTrigger.openMenu()"><img
+                  [src]="photoUrl" class="img-circle"></button></a>
+            <mat-menu #authName="matMenu" [overlapTrigger]="false">
+              <div (mouseleave)="matMenuTrigger.closeMenu()">
+                <button (click)="logout()" class="btn btn-warning">Logout({{authenticatedName}})</button>
+
+
+              </div>
+            </mat-menu>
+          </ng-template>
+        </li>
+
+
+
+
+
+
+        <li *ngIf="!photoUrl && authenticatedName">
           <ng-template ngIf="true">
             <a><button mat-button [matMenuTriggerFor]="authName" #matMenuTrigger="matMenuTrigger" (mouseenter)="matMenuTrigger.openMenu()">{{authenticatedName}}<span
                   class="caret"></span></button></a>

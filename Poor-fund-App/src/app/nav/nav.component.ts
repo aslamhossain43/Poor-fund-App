@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class NavComponent implements OnInit {
 ADMIN = 'aslamecehstu043@gmail.com';
   authenticatedName: any;
+  photoUrl: string;
   constructor(public af: AngularFireAuth, private router: Router) {
     this.af.authState.subscribe(auth => {
       if (!auth.displayName) {
@@ -16,6 +17,7 @@ ADMIN = 'aslamecehstu043@gmail.com';
       } else {
         this.authenticatedName = auth.displayName;
       }
+      this.photoUrl = auth.photoURL;
     });
 
   }
@@ -25,6 +27,7 @@ ADMIN = 'aslamecehstu043@gmail.com';
   logout() {
     this.af.auth.signOut();
     this.authenticatedName = null;
+    this.photoUrl = null;
     this.router.navigateByUrl('/login');
   }
   ngOnInit() {

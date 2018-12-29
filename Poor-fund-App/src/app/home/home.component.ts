@@ -1,5 +1,5 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
-import { moveIn } from '../router.animations';
+
 
 @Component({
   selector: 'app-home',
@@ -9,7 +9,7 @@ import { moveIn } from '../router.animations';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor() {}
 // @HostBinding('@moveIn')
   ngOnInit() {
   }
