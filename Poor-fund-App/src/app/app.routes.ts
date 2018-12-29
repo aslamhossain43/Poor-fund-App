@@ -25,6 +25,8 @@ import { CurrentYearGranredListComponent } from './current-year-granred-list/cur
 import { LastYearGrantedListComponent } from './last-year-granted-list/last-year-granted-list.component';
 import { CurrentYearNotGrantedListComponent } from './current-year-not-granted-list/current-year-not-granted-list.component';
 import { LastYearNotGrantedListComponent } from './last-year-not-granted-list/last-year-not-granted-list.component';
+import { ManageCandidatesComponent } from './manage-candidates/manage-candidates.component';
+import { ManageDonorsComponent } from './manage-donors/manage-donors.component';
 export const router: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -51,6 +53,8 @@ export const router: Routes = [
   { path: 'manage', component: ManageComponent, canActivate: [AuthGuard] },
   { path: 'manage-grant', component: ManageGrantedListComponent},
   { path: 'manage-notGrant', component: ManageNotGrantedListComponent},
+  { path: 'manage-candidates', component: ManageCandidatesComponent},
+  { path: 'manage-donors', component: ManageDonorsComponent},
   { path: 'members', component: MembersComponent, canActivate: [AuthGuard] },
   { path: 'signup', component: SignupComponent }
 ];

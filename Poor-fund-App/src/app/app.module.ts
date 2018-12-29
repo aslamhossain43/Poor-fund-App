@@ -57,6 +57,12 @@ import { LastYearGrantedListService } from './last-year-granted-list/last-year-g
 import { CurrentYearGrantedListService } from './current-year-granred-list/current-year-granred-list.service';
 import { LastYearNotGrantedListService } from './last-year-not-granted-list/last-year-not-granted-list.service';
 import { CurrentYearNotGrantedListService } from './current-year-not-granted-list/current-year-not-granted-list.service';
+import { ManageDonorsComponent } from './manage-donors/manage-donors.component';
+import { ManageCandidatesComponent } from './manage-candidates/manage-candidates.component';
+import { ManageCandidatesService } from './manage-candidates/manage-candidates.service';
+import { NgxBootstrapModule } from './app.ngx-bootstrap';
+import { BsModalService } from 'ngx-bootstrap';
+import { ManageDonorService } from './manage-donors/manage-donors.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -85,7 +91,9 @@ import { CurrentYearNotGrantedListService } from './current-year-not-granted-lis
     CurrentYearGranredListComponent,
     LastYearGrantedListComponent,
     CurrentYearNotGrantedListComponent,
-    LastYearNotGrantedListComponent
+    LastYearNotGrantedListComponent,
+    ManageDonorsComponent,
+    ManageCandidatesComponent
   ],
   imports: [
     BrowserModule,
@@ -102,14 +110,18 @@ import { CurrentYearNotGrantedListService } from './current-year-not-granted-lis
     HttpClientModule,
     // FOR NG MATERIAL
     NgMaterialModule,
-    // FOR FORM MODULE
-    ReactiveFormsModule
+    // FOR REACTIVE FORM MODULE
+    ReactiveFormsModule,
+    // FOR NGX BOOTSTRAP MODULE
+     NgxBootstrapModule
   ],
   providers: [AuthGuard, AngularFireAuth, UploadFileService, ConsumerService, ViewCandidateService
   , ManageGrantedService, GrantedListService, NotGrantedListService, ManageNotGrantedListService,
 DonorService, TotalDonorService, LastYaerTotalDonorService, CurrentYaerTotalDonorService,
 LastYearGrantedListService, CurrentYearGrantedListService, LastYearNotGrantedListService
-, CurrentYearNotGrantedListService],
+, CurrentYearNotGrantedListService, ManageCandidatesService, ManageDonorService,
+// For Modal
+BsModalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,7 +2,6 @@ import { Observable } from 'rxjs';
 import { Donors } from '../add-me-as-donors/add-me-as-donors';
 import { Http, Response } from '@angular/http';
 import { map, catchError } from 'rxjs/operators';
-import { jsonpCallbackContext } from '@angular/common/http/src/module';
 import { Injectable } from '@angular/core';
 @Injectable()
 export class TotalDonorService {
@@ -18,3 +17,4 @@ public handleError(error: Response) {
     return Observable.throw(error);
 }
 }
+

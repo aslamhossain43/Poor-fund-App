@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit {
-
+ADMIN = 'aslamecehstu043@gmail.com';
   authenticatedName: any;
   constructor(public af: AngularFireAuth, private router: Router) {
     this.af.authState.subscribe(auth => {
