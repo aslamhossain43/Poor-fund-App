@@ -63,6 +63,11 @@ import { ManageCandidatesService } from './manage-candidates/manage-candidates.s
 import { NgxBootstrapModule } from './app.ngx-bootstrap';
 import { BsModalService } from 'ngx-bootstrap';
 import { ManageDonorService } from './manage-donors/manage-donors.service';
+import { ManageStaffComponent } from './manage-staff/manage-staff.component';
+import { MainPurposeComponent } from './main-purpose/main-purpose.component';
+import { StaffDirectoryComponent } from './staff-directory/staff-directory.component';
+import { DevelopersComponent } from './developers/developers.component';
+import { HistoryOfBangladeshComponent } from './history-of-bangladesh/history-of-bangladesh.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -93,7 +98,12 @@ import { ManageDonorService } from './manage-donors/manage-donors.service';
     CurrentYearNotGrantedListComponent,
     LastYearNotGrantedListComponent,
     ManageDonorsComponent,
-    ManageCandidatesComponent
+    ManageCandidatesComponent,
+    ManageStaffComponent,
+    MainPurposeComponent,
+    StaffDirectoryComponent,
+    DevelopersComponent,
+    HistoryOfBangladeshComponent
   ],
   imports: [
     BrowserModule,

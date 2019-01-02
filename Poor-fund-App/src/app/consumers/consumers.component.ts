@@ -1,18 +1,14 @@
-import { Component, OnInit, HostBinding, Inject } from '@angular/core';
+import { Component, OnInit, HostBinding, TemplateRef } from '@angular/core';
 import { consumerMoveIn } from '../router.animations';
-import { HttpEventType } from '@angular/common/http';
 import { UploadFileService } from './consumers.upload.service';
 import { Consumers } from './consumers';
 import { ConsumerService } from './consumers.consumer-service';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
-import { ManageGrantedService } from '../manage-granted-list/manage-granted-list.service';
-import { ManageNotGrantedListService } from '../manage-not-granted-list/manage-not-granted-list.service';
-import { GrantedListService } from '../granted-list/granted-list.service';
-import { NotGrantedListService } from '../not-granted-list/not-granted-list.service';
-import { CurrentYaerTotalDonorService } from '../current-year-donors/current-year-donors.service';
-import { LastYaerTotalDonorService } from '../last-year-donors/last-year-donors.service';
-import { TotalDonorService } from '../total-donors/total-donors.service';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { auth } from 'firebase';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import { Response } from '@angular/http';
+
 
 
 
@@ -23,6 +19,12 @@ import { TotalDonorService } from '../total-donors/total-donors.service';
   animations: [consumerMoveIn()]
 })
 export class ConsumersComponent implements OnInit {
+  // FOR NULL
+  nullValue = null;
+  // AUTH ID
+  uid: string;
+   // FOR NGX BOOTSTRAP  MODAL
+   public modalRef: BsModalRef;
   // FOR MESSGAE
   msg = 'offPrpgressBar';
   // FOR CONSUMERS
@@ -47,11 +49,16 @@ export class ConsumersComponent implements OnInit {
   selectedPiFileControl = new FormControl('', [Validators.required]);
   selectedApiFileControl = new FormControl('', [Validators.required]);
   // FOR CONSTRUCTOR
-  constructor(private uploadService: UploadFileService,
-    private consumerService: ConsumerService, private router: Router, private manageGrantedListService: ManageGrantedService,
-    private manageNotGrantedListService: ManageNotGrantedListService, private grantedListService: GrantedListService,
-    private notGrantedListService: NotGrantedListService, private currentYearTotalDonorService: CurrentYaerTotalDonorService,
-    private lastYearTotalDonorService: LastYaerTotalDonorService, private totalDonorService: TotalDonorService) { }
+  constructor(private af: AngularFireAuth , private uploadService: UploadFileService,
+    private consumerService: ConsumerService,
+      // FOR NGX BOOTSTRAP  MODAL
+      private modalService: BsModalService) {
+     this.af.authState.subscribe(authentication => {
+     this.consumer.uid = authentication.uid;
+     this.uid = authentication.uid;
+     console.log(this.consumer.uid);
+     });
+    }
 
   biodataForm: FormGroup = new FormGroup({
     name: this.nameFormControl,
@@ -85,11 +92,14 @@ export class ConsumersComponent implements OnInit {
   // FOR BINDING ANIMATION
   @HostBinding('@consumerMoveIn')
   // NG LIFE CYCLE
-  ngOnInit() {
-
+  ngOnInit(): void {
+this.getConsumers();
   }
 
-
+ // FOR NGX BOOTSTRAP  MODAL
+ public openModal(template: TemplateRef<any>) {
+  this.modalRef = this.modalService.show(template); // {3}
+ }
   // FOR FILE UPLOAD
   selectpiFile(event) {
     this.selectedpiFiles = event.target.files;
@@ -97,6 +107,17 @@ export class ConsumersComponent implements OnInit {
   selectapiFile(event) {
     this.selectedapiFiles = event.target.files;
   }
+
+// GET CUURENT YEAR CONSUMERS
+getConsumers(): void {
+  this.consumerService.getCurrentYearAllConsumers()
+  .subscribe((currentYearAllConsumers) => {
+    this.consumers = currentYearAllConsumers;
+    console.log(this.consumers);
+  });
+}
+
+
 
   uploadFile() {
     this.msg = '';
@@ -145,7 +166,20 @@ export class ConsumersComponent implements OnInit {
     this.consumer.selectedPiFile = null;
     this.consumer.selectedApiFile = null;
   }
+  deleteCandidate(id: string) {
+    this.consumerService.deleteCandidate(id)
+    .subscribe((response: Response) => {
+      this.getConsumers();
+    },
+    (error) => {
+  });
 
 }
+getCandidateById(id: string): void {
+  this.consumerService.getCandidateById(id)
+  .subscribe((candidateById) => {
+    this.consumer = candidateById;
+  });
+}
 
-
+}

@@ -26,11 +26,14 @@
                 Us<span class="caret"></span></button></a>
             <mat-menu #about="matMenu" [overlapTrigger]="false">
               <div (mouseleave)="matMenuTrigger.closeMenu()">
-                <button mat-menu-item="about" [routerLink]="['/about']" [routerLinkActive]="['active']"
+                <button mat-menu-item="about" [routerLink]="['/main-purpose']" [routerLinkActive]="['active']"
                   [routerLinkActiveOptions]="{ exact: true }"> Main Purpose</button>
-                <button mat-menu-item="currentYearDonors">Main Director</button>
-                <button mat-menu-item="lastYearDonors">Managers</button>
-                <button mat-menu-item="totalDonors">Developers</button>
+                  <button mat-menu-item="about" [routerLink]="['/staff-directory']" [routerLinkActive]="['active']"
+                  [routerLinkActiveOptions]="{ exact: true }">Staff Directory</button>
+                  <button mat-menu-item="about" [routerLink]="['/developers']" [routerLinkActive]="['active']"
+                  [routerLinkActiveOptions]="{ exact: true }">Developers</button>
+                  <button mat-menu-item="about" [routerLink]="['/history-of-bangladesh']" [routerLinkActive]="['active']"
+                  [routerLinkActiveOptions]="{ exact: true }">History Of Bangladesh</button>
               </div>
             </mat-menu>
           </ng-template>
@@ -44,16 +47,16 @@
             <mat-menu #donors="matMenu" [overlapTrigger]="false">
               <div (mouseleave)="matMenuTrigger.closeMenu()">
                 <button mat-menu-item [routerLink]="['/donorsGrantingInformation']" [routerLinkActive]="['active']"
-                  [routerLinkActiveOptions]="{ exact: true }">Donors granting information</button>
+                  [routerLinkActiveOptions]="{ exact: true }">Donors Granting Information</button>
                 <button mat-menu-item [routerLink]="['/addMeAsDonors']" [routerLinkActive]="['active']"
-                  [routerLinkActiveOptions]="{ exact: true }">Add me as donors</button>
+                  [routerLinkActiveOptions]="{ exact: true }">Add Me As Donors</button>
 
                 <button mat-menu-item [routerLink]="['/currentYearDonors']" [routerLinkActive]="['active']"
-                  [routerLinkActiveOptions]="{ exact: true }">Current year involved donors</button>
+                  [routerLinkActiveOptions]="{ exact: true }">Current Year Involved Donors</button>
                 <button mat-menu-item [routerLink]="['/lastYearDonors']" [routerLinkActive]="['active']"
-                  [routerLinkActiveOptions]="{ exact: true }">Last year involved donors</button>
+                  [routerLinkActiveOptions]="{ exact: true }">Last Year Involved Donors</button>
                 <button mat-menu-item [routerLink]="['/totalDonors']" [routerLinkActive]="['active']"
-                  [routerLinkActiveOptions]="{ exact: true }">Total involved donors</button>
+                  [routerLinkActiveOptions]="{ exact: true }">Total Involved Donors</button>
               </div>
             </mat-menu>
           </ng-template>
@@ -70,21 +73,21 @@
                 <button mat-menu-item [routerLink]="['/grantingInformation']" [routerLinkActive]="['active']"
                   [routerLinkActiveOptions]="{ exact: true }">Granging Information</button>
                 <button mat-menu-item [routerLink]="['/addme']" [routerLinkActive]="['active']"
-                  [routerLinkActiveOptions]="{ exact: true }">Add me as candidate</button>
+                  [routerLinkActiveOptions]="{ exact: true }">Add Me As Candidate</button>
                 <button mat-menu-item [routerLink]="['/currentYearGrantedList']" [routerLinkActive]="['active']"
-                  [routerLinkActiveOptions]="{ exact: true }">Current year granted list</button>
+                  [routerLinkActiveOptions]="{ exact: true }">Current Year Granted List</button>
                 <button mat-menu-item [routerLink]="['/lastYearGrantedList']" [routerLinkActive]="['active']"
-                  [routerLinkActiveOptions]="{ exact: true }">Last year granted list</button>
+                  [routerLinkActiveOptions]="{ exact: true }">Last Year Granted List</button>
 
                 <button mat-menu-item [routerLink]="['/grantedList']" [routerLinkActive]="['active']"
-                  [routerLinkActiveOptions]="{ exact: true }">Total granted list</button>
+                  [routerLinkActiveOptions]="{ exact: true }">Total Granted List</button>
                 <button mat-menu-item [routerLink]="['/currentYearNotGrantedList']" [routerLinkActive]="['active']"
-                  [routerLinkActiveOptions]="{ exact: true }">Current year not granted list</button>
+                  [routerLinkActiveOptions]="{ exact: true }">Current Year Not Granted List</button>
                 <button mat-menu-item [routerLink]="['/lastYearNotGrantedList']" [routerLinkActive]="['active']"
-                  [routerLinkActiveOptions]="{ exact: true }">Last year not granted list</button>
+                  [routerLinkActiveOptions]="{ exact: true }">Last Year Not Granted List</button>
 
                 <button mat-menu-item [routerLink]="['/notGrantedList']" [routerLinkActive]="['active']"
-                  [routerLinkActiveOptions]="{ exact: true }">Total not granted list</button>
+                  [routerLinkActiveOptions]="{ exact: true }">Total Not Granted List</button>
               </div>
             </mat-menu>
           </ng-template>
@@ -104,6 +107,8 @@
                   [routerLinkActiveOptions]="{ exact: true }">Manage Candidates</button>
                 <button mat-menu-item="manage-donors" [routerLink]="['/manage-donors']" [routerLinkActive]="['active']"
                   [routerLinkActiveOptions]="{ exact: true }">Manage Donors</button>
+                  <button mat-menu-item="manage-donors" [routerLink]="['/manage-staff']" [routerLinkActive]="['active']"
+                  [routerLinkActiveOptions]="{ exact: true }">Manage Staff</button>
 
               </div>
             </mat-menu>
@@ -114,7 +119,7 @@
 
       <ul class="nav navbar-nav navbar-right">
         <li id="signup"><a [routerLink]="['/signup']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">Sign
-            up</a></li>
+            Up</a></li>
 
         <li id="login" *ngIf="!authenticatedName"><a [routerLink]="['/login']" [routerLinkActive]="['active']"
             [routerLinkActiveOptions]="{ exact: true }">Login</a></li>

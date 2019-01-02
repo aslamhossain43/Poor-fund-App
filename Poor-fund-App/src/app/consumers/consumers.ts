@@ -10,8 +10,11 @@ export class Consumers {
     contact: number;
     bkash: number;
     apiCode: string;
+    prCode: string;
     createdDate: string;
     lastModifiedDate: string;
+    // FOR AUTH UID
+    uid: string;
     // FOR FILE RESET ONLY
     selectedPiFile: File;
     selectedApiFile: File;

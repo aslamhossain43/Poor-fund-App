@@ -12,8 +12,7 @@
             your union's chairman and member both.
           </p>
         </div>
-
-
+        <input type="hidden" name="consumer.id">
         <div id="fileSelectButton" class="btn btn-primary">
           <input type="file" required [formControl]="selectedPiFileControl" (change)="selectpiFile($event)"
            [(ngModel)]="consumer.selectedPiFile">
@@ -79,7 +78,9 @@
         </div>
 
         <br>
-        <button id="submitButton" mat-raised-button color="primary" class="submit-button" [disabled]="!(selectedpiFiles && selectedapiFiles && consumer.name
+        <button id="submitButton" mat-raised-button color="primary" class="submit-button"
+         
+         [disabled]="!(selectedpiFiles && selectedapiFiles && consumer.name
         && consumer.country && consumer.zela && consumer.upozela &&
         consumer.union && consumer.work && consumer.contact &&
         consumer.bkash)"
@@ -89,7 +90,61 @@
 
 
 
-
     </div>
   </div>
+</div>
+
+<hr>
+<div class="container">
+<div class="row">
+
+    <div *ngFor="let c of consumers">
+        <div *ngIf="!c.status" class=" col-sm-4  col-md-4 col-lg-4">
+            
+            <div class="thumbnail">
+                <p>Apply Date : {{c.lastModifiedDate}}</p>
+                <p>ID : {{c.id}}</p>
+                <p>Candidate<span class="caret"></span></p>
+              <img src="assets/client-images/{{c.piCode}}.jpg">
+              <p>Application<span class="caret"></span></p>
+              <img src="assets/client-images/{{c.apiCode}}.jpg">
+                
+                <div class="caption">
+                    <p>Details Address<span class="caret"></span></p>
+                   <p>Name : {{c.name}}</p>
+                   <p>Country : {{c.country}}</p>
+                   <p>Zela : {{c.zela}}</p>
+                   <p>Upozela : {{c.upozela}}</p>
+                   <p>Union : {{c.union}}</p>
+                   <p>Work : {{c.work}}</p>
+                   <p>Contact : {{c.contact}}</p>
+                   <p>bKash : {{c.bkash}}</p>
+                   <button *ngIf="c.uid === uid"  id="EDIT" type="button" class="btn btn-primary" 
+                   (click)="getCandidateById(c.id)">EDIT</button>
+                   <button *ngIf="c.uid === uid"  id="DELETE" type="button" class="btn btn-primary" 
+                   (click)="openModal(template)">DELETE</button>
+                   </div>
+           </div>
+    
+    
+    
+            </div>
+
+            <ng-template #template>
+                <div class="modal-header">
+                    <h4 class="modal-title">Notice confirm modal carefully </h4>
+                   
+                </div>
+                <div class="modal-body">
+                    Do you want to delete id : {{c.id}} ?
+                </div>
+                <div class="modal-footer">
+                  <button id="deleteBtn" class="btn btn-primary" (click)="deleteCandidate(c.id)" (click)="modalRef.hide()">Confirm</button>
+                  <button id="closeBtn" class="btn btn-primary" (click)="modalRef.hide()">Close</button>
+                  
+              </div>
+            </ng-template>
+    </div>
+    
+</div>
 </div>

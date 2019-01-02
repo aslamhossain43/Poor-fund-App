@@ -27,12 +27,20 @@ import { CurrentYearNotGrantedListComponent } from './current-year-not-granted-l
 import { LastYearNotGrantedListComponent } from './last-year-not-granted-list/last-year-not-granted-list.component';
 import { ManageCandidatesComponent } from './manage-candidates/manage-candidates.component';
 import { ManageDonorsComponent } from './manage-donors/manage-donors.component';
+import { ManageStaffComponent } from './manage-staff/manage-staff.component';
+import { MainPurposeComponent } from './main-purpose/main-purpose.component';
+import { StaffDirectoryComponent } from './staff-directory/staff-directory.component';
+import { DevelopersComponent } from './developers/developers.component';
+import { HistoryOfBangladeshComponent } from './history-of-bangladesh/history-of-bangladesh.component';
 export const router: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'login-email', component: EmailComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'about', component: AboutComponent },
+  { path: 'main-purpose', component: MainPurposeComponent },
+  { path: 'staff-directory', component: StaffDirectoryComponent },
+  { path: 'developers', component: DevelopersComponent },
+  { path: 'history-of-bangladesh', component: HistoryOfBangladeshComponent},
   { path: 'donorsGrantingInformation', component: DonorsGrantingInformationComponent },
   { path: 'addMeAsDonors', component: AddMeAsDonorsComponent },
   { path: 'currentYearDonors', component: CurrentYearDonorsComponent },
@@ -55,6 +63,7 @@ export const router: Routes = [
   { path: 'manage-notGrant', component: ManageNotGrantedListComponent},
   { path: 'manage-candidates', component: ManageCandidatesComponent},
   { path: 'manage-donors', component: ManageDonorsComponent},
+  { path: 'manage-staff', component: ManageStaffComponent},
   { path: 'members', component: MembersComponent, canActivate: [AuthGuard] },
   { path: 'signup', component: SignupComponent }
 ];
