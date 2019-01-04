@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
 import { ConsumersComponent } from './consumers/consumers.component';
 import { ContactComponent } from './contact/contact.component';
 import { ManageComponent } from './manage/manage.component';
@@ -21,7 +20,6 @@ import { environment } from '../environments/environment';
 import { AuthGuard } from './auth.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { routes } from './app.routes';
-import { MembersComponent } from './members/members.component';
 // FOR FILE UPLOAD
 import { HttpClientModule } from '@angular/common/http';
 import { UploadFileService } from './consumers/consumers.upload.service';
@@ -74,7 +72,6 @@ import { StaffDirectoryService } from './staff-directory/staff-directory.service
   declarations: [
     AppComponent,
     HomeComponent,
-    AboutComponent,
     ConsumersComponent,
     ContactComponent,
     ManageComponent,
@@ -82,7 +79,6 @@ import { StaffDirectoryService } from './staff-directory/staff-directory.service
     LoginComponent,
     SignupComponent,
     EmailComponent,
-    MembersComponent,
     ViewCandidatesComponent,
     ManageGrantedListComponent,
     GrantedListComponent,
@@ -138,3 +134,4 @@ BsModalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

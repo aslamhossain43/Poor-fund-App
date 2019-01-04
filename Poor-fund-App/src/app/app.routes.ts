@@ -1,13 +1,11 @@
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
 import { ConsumersComponent } from './consumers/consumers.component';
 import { ContactComponent } from './contact/contact.component';
 import { ManageComponent } from './manage/manage.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth.service';
-import { MembersComponent } from './members/members.component';
 import { ModuleWithProviders } from '@angular/core';
 import { EmailComponent } from './email/email.component';
 import { ViewCandidatesComponent } from './view-candidates/view-candidates.component';
@@ -64,7 +62,6 @@ export const router: Routes = [
   { path: 'manage-candidates', component: ManageCandidatesComponent},
   { path: 'manage-donors', component: ManageDonorsComponent},
   { path: 'manage-staff', component: ManageStaffComponent},
-  { path: 'members', component: MembersComponent, canActivate: [AuthGuard] },
   { path: 'signup', component: SignupComponent }
 ];
 

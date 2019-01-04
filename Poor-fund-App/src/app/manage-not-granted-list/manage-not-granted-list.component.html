@@ -6,7 +6,8 @@
       <br>
 
       <form class="form" name="biodataForm" [formGroup]="biodataForm">
-        <h3>Manage not granted list</h3>
+        <p id="headingP">Manage Not Granted List</p>
+        <hr>
         <div class="formDiv">
           <mat-form-field>
             <input matInput placeholder="Not-Grant-id" required type="text" autocomplete="off" [(ngModel)]="notGrant.notGrantId"
