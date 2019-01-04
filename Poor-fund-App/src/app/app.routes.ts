@@ -1,8 +1,6 @@
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ConsumersComponent } from './consumers/consumers.component';
-import { ContactComponent } from './contact/contact.component';
-import { ManageComponent } from './manage/manage.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth.service';
@@ -55,8 +53,6 @@ export const router: Routes = [
   { path: 'lastYearNotGrantedList', component: LastYearNotGrantedListComponent },
   { path: 'notGrantedList', component: NotGrantedListComponent },
   { path: 'view-candidates', component: ViewCandidatesComponent },
-  { path: 'contact', component: ContactComponent },
-  { path: 'manage', component: ManageComponent, canActivate: [AuthGuard] },
   { path: 'manage-grant', component: ManageGrantedListComponent},
   { path: 'manage-notGrant', component: ManageNotGrantedListComponent},
   { path: 'manage-candidates', component: ManageCandidatesComponent},

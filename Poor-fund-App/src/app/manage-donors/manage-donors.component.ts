@@ -1,13 +1,15 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, HostBinding } from '@angular/core';
 import { ManageTotalDonors } from './manage-donors';
 import { ManageDonorService } from './manage-donors.service';
 import { Response } from '@angular/http';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import { fromLeft } from '../router.animations';
 
 @Component({
   selector: 'app-manage-donors',
   templateUrl: './manage-donors.component.html',
-  styleUrls: ['./manage-donors.component.scss']
+  styleUrls: ['./manage-donors.component.scss'],
+  animations: [fromLeft()]
 })
 export class ManageDonorsComponent implements OnInit {
   // FOR NGX BOOTSTRAP  MODAL
@@ -17,6 +19,7 @@ getTotalDonors: ManageTotalDonors[];
   constructor(private manageTotalDonorService: ManageDonorService,
      // FOR NGX BOOTSTRAP  MODAL
      private modalService: BsModalService) { }
+     @HostBinding('@fromLeft')
       // FOR NGX BOOTSTRAP  MODAL
       public openModal(template: TemplateRef<any>) {
         this.modalRef = this.modalService.show(template); // {3}

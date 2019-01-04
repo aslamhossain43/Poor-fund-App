@@ -1,7 +1,7 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Router } from '@angular/router';
-import { moveIn, fallIn, moveInLeft } from '../router.animations';
+import {fallIn, fromTop} from '../router.animations';
 
 
 
@@ -9,7 +9,7 @@ import { moveIn, fallIn, moveInLeft } from '../router.animations';
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss'],
-  animations: [moveIn()]
+  animations: [fromTop(), fallIn()]
 })
 export class SignupComponent implements OnInit {
   state: '';
@@ -19,7 +19,7 @@ export class SignupComponent implements OnInit {
 
   }
   // TO BIND EXPORTED ANIMATION FUNCTION
-  @HostBinding('@moveIn')
+  @HostBinding('@fromTop')
 
 
   onSubmit(formData) {
@@ -29,7 +29,7 @@ export class SignupComponent implements OnInit {
         formData.value.password
       ).then(
         (success) => {
-          this.router.navigate(['/manage']);
+          this.router.navigate(['/home']);
         }).catch(
           (err) => {
             this.error = err;

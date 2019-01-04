@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { Grant } from './manage-granted-list';
 import { AllCandidates } from './manage-granted-list.candidates';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { ManageGrantedService } from './manage-granted-list.service';
+import { fromRight } from '../router.animations';
 
 @Component({
   selector: 'app-manage-granted-list',
   templateUrl: './manage-granted-list.component.html',
-  styleUrls: ['./manage-granted-list.component.scss']
+  styleUrls: ['./manage-granted-list.component.scss'],
+  animations: [fromRight()]
 })
 export class ManageGrantedListComponent implements OnInit {
 // FOR MESSAGE
@@ -34,7 +36,7 @@ getRequiredErrorMessage(field) {
   }
 }
 constructor(private grantService: ManageGrantedService) { }
-
+@HostBinding('@fromRight')
 ngOnInit(): void {
   this.getAllCandidates();
 }

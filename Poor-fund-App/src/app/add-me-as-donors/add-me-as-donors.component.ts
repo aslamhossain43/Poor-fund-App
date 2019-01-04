@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { Donors } from './add-me-as-donors';
 import { DonorService } from './add-me-as-donors.service';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { fromBottom } from '../router.animations';
 
 @Component({
   selector: 'app-add-me-as-donors',
   templateUrl: './add-me-as-donors.component.html',
-  styleUrls: ['./add-me-as-donors.component.scss']
+  styleUrls: ['./add-me-as-donors.component.scss'],
+  animations: [fromBottom()]
 })
 export class AddMeAsDonorsComponent implements OnInit {
   // MAT PROGRESS BAR
@@ -41,7 +43,7 @@ nameFormControl = new FormControl('', [Validators.required, Validators.minLength
   }
 
   constructor(private donorService: DonorService) { }
-
+@HostBinding('@fromBottom')
   ngOnInit() {
   }
 addDonors() {

@@ -1,5 +1,4 @@
 import { Component, OnInit, HostBinding, TemplateRef } from '@angular/core';
-import { consumerMoveIn } from '../router.animations';
 import { UploadFileService } from './consumers.upload.service';
 import { Consumers } from './consumers';
 import { ConsumerService } from './consumers.consumer-service';
@@ -8,6 +7,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { auth } from 'firebase';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { Response } from '@angular/http';
+import { from } from 'rxjs';
+import { fromRight } from '../router.animations';
 
 
 
@@ -16,7 +17,7 @@ import { Response } from '@angular/http';
   selector: 'app-consumers',
   templateUrl: './consumers.component.html',
   styleUrls: ['./consumers.component.scss'],
-  animations: [consumerMoveIn()]
+  animations: [fromRight()]
 })
 export class ConsumersComponent implements OnInit {
   // FOR NULL
@@ -90,7 +91,7 @@ export class ConsumersComponent implements OnInit {
     return this.biodataForm.get(field).hasError('required') ? 'You must enter valid ' + field + ' number' : '';
   }
   // FOR BINDING ANIMATION
-  @HostBinding('@consumerMoveIn')
+  @HostBinding('@fromRight')
   // NG LIFE CYCLE
   ngOnInit(): void {
 this.getConsumers();

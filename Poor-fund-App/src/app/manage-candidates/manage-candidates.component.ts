@@ -1,13 +1,15 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, HostBinding } from '@angular/core';
 import { ManageAllCandidates } from './manage-candidates';
 import { ManageCandidatesService } from './manage-candidates.service';
 import { Response } from '@angular/http';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import { fromRight } from '../router.animations';
 
 @Component({
   selector: 'app-manage-candidates',
   templateUrl: './manage-candidates.component.html',
-  styleUrls: ['./manage-candidates.component.scss']
+  styleUrls: ['./manage-candidates.component.scss'],
+  animations: [fromRight()]
 })
 export class ManageCandidatesComponent implements OnInit {
   // FOR NGX BOOTSTRAP  MODAL
@@ -18,6 +20,7 @@ export class ManageCandidatesComponent implements OnInit {
   constructor(private manageCandidateService: ManageCandidatesService,
     // FOR NGX BOOTSTRAP  MODAL
     private modalService: BsModalService ) { }
+    @HostBinding('@fromRight')
     // FOR NG LIFE CYCLE
     ngOnInit(): void {
       this.getAllCandidates();

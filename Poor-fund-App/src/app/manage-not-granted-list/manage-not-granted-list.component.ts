@@ -1,13 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { NotGrant } from './manage-not-granted-list';
 import { AllCandidates } from './manage-not-granted-list.candidates';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { ManageNotGrantedListService } from './manage-not-granted-list.service';
+import { fromLeft } from '../router.animations';
 
 @Component({
   selector: 'app-manage-not-granted-list',
   templateUrl: './manage-not-granted-list.component.html',
-  styleUrls: ['./manage-not-granted-list.component.scss']
+  styleUrls: ['./manage-not-granted-list.component.scss'],
+  animations: [fromLeft()]
+
 })
 export class ManageNotGrantedListComponent implements OnInit {
 // FOR MESSAGE
@@ -30,7 +33,7 @@ getRequiredErrorMessage(field) {
   }
 }
 constructor(private notGrantService: ManageNotGrantedListService) { }
-
+@HostBinding('@fromLeft')
 ngOnInit(): void {
   this.getAllCandidates();
 }

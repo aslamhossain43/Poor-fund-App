@@ -1,13 +1,13 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { moveIn } from '../router.animations';
+import {fromBottom } from '../router.animations';
 import { auth as authen } from 'firebase';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  animations: [moveIn()]
+  animations: [fromBottom()]
 })
 export class LoginComponent implements OnInit {
 
@@ -22,12 +22,12 @@ export class LoginComponent implements OnInit {
   }
 
   // TO BIND EXPORTED ANIMATION FUNCTION
-  @HostBinding('@moveIn')
+  @HostBinding('@fromBottom')
 
   loginFb() {
     this.af.auth.signInWithPopup(new authen.FacebookAuthProvider()).then(
       (success) => {
-        this.router.navigate(['/members']);
+        this.router.navigate(['/home']);
       }).catch(
         (err) => {
           this.error = err;
@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
   loginGoogle() {
     this.af.auth.signInWithPopup(new authen.GoogleAuthProvider()).then(
       (success) => {
-        this.router.navigate(['/manage']);
+        this.router.navigate(['/home']);
       }).catch(
         (err) => {
           this.error = err;

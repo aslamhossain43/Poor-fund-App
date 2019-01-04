@@ -1,14 +1,16 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, HostBinding } from '@angular/core';
 import { Staff } from './manage-staff';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { ManageStaffService } from './manage-staff.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap';
 import { Response } from '@angular/http';
+import { fromBottom } from '../router.animations';
 
 @Component({
   selector: 'app-manage-staff',
   templateUrl: './manage-staff.component.html',
-  styleUrls: ['./manage-staff.component.scss']
+  styleUrls: ['./manage-staff.component.scss'],
+  animations: [fromBottom()]
 })
 export class ManageStaffComponent implements OnInit {
 
@@ -42,6 +44,7 @@ export class ManageStaffComponent implements OnInit {
   constructor(private staffService: ManageStaffService,
      // FOR NGX BOOTSTRAP  MODAL
      private modalService: BsModalService) { }
+     @HostBinding('@fromBottom')
   ngOnInit(): void {
     this.getAllStaff();
    }

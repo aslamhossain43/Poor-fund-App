@@ -1,19 +1,5 @@
 import { trigger, state, animate, style, transition } from '@angular/animations';
-// FOR AUTHENTICATION
-export function moveIn() {
-  return trigger('moveIn', [
-    state('void', style({ position: 'fixed', width: '100%' })),
-    // state('*', style({ position: 'fixed', width: '100%' })),
-    transition(':enter', [
-      style({ opacity: '0', transform: 'translateX(50%)' }),
-      animate('1s ease-in-out', style({ opacity: '1', transform: 'translateX(0)' }))
-    ]),
-    transition(':leave', [
-      style({ opacity: '1', transform: 'translateX(0)' }),
-      animate('0.5s ease-in-out', style({ opacity: '0.5', transform: 'translateX(-100%)' }))
-    ])
-  ]);
-}
+
 
 export function fallIn() {
   return trigger('fallIn', [
@@ -27,7 +13,19 @@ export function fallIn() {
     ])
   ]);
 }
-
+// FROM TOP
+export function fromTop() {
+  return trigger('fromTop', [
+    state('*', style({ position: 'absolute', width: '100%' })),
+    transition(':enter', [
+      style({ opacity: '0', transform: 'translateY(-100%)' }), // from 100% Y,
+      animate('1s ease-in-out', style({ opacity: '1', transform: 'translateY(0%)' })) // last position 0 Y
+    ]),
+    transition(':leave', [
+      style({ opacity: '0.5', transform: 'translateY(0%)' }), // from where
+      animate('1s ease-in-out', style({ opacity: '0.2', transform: 'translateY(-100%)' }))
+    ])]);
+}
 export function moveInLeft() {
   return trigger('moveInLeft', [
     transition(':enter', [
@@ -36,30 +34,46 @@ export function moveInLeft() {
     ])
   ]);
 }
-// FOR CONSUMER
-export function consumerMoveIn() {
-  return trigger('consumerMoveIn', [
-    state('void', style({ position: 'fixed', width: '100%' })),
+// FROM LEFT
+export function fromLeft() {
+  return trigger('fromLeft', [
+    state('*', style({ position: 'absolute', width: '100%' })),
     transition(':enter', [
-      style({ opacity: '0', transform: 'translateX(50%)' }),
+      style({ opacity: '0', transform: 'translateX(-100%)' }),
       animate('1s ease-in-out', style({ opacity: '1', transform: 'translateX(0)' }))
     ]),
     transition(':leave', [
       style({ opacity: '0.5', transform: 'translateX(0)' }),
-      animate('1s ease-in-out', style({ opacity: '0.4', transform: 'translateX(-100%)' }))
+      animate('1s ease-in-out', style({ opacity: '0.2', transform: 'translateX(-100%)' }))
     ])]);
 }
 
-// FOR VIEW CANDIDATES
-export function viewCandidatesMoveIn() {
-  return trigger('viewCandidatesMoveIn', [
-    state('void', style({ position: 'fixed', width: '100%' })),
+// FROM RIGHT
+export function fromRight() {
+  return trigger('fromRight', [
+    state('*', style({ position: 'absolute', width: '100%' })),
+    transition(':enter', [
+      style({ opacity: '0', transform: 'translateX(100%)' }),
+      animate('1s ease-in-out', style({ opacity: '1', transform: 'translateX(0)' }))
+    ]),
+    transition(':leave', [
+      style({ opacity: '0.5', transform: 'translateX(0)' }),
+      animate('1s ease-in-out', style({ opacity: '0.2', transform: 'translateX(100%)' }))
+    ])]);
+}
+
+
+// FROM BOTTOM
+export function fromBottom() {
+  return trigger('fromBottom', [
+    state('*', style({ position: 'absolute', width: '100%' })),
     transition(':enter', [
       style({ opacity: '0', transform: 'translateY(100%)' }), // from 100% Y,
       animate('1s ease-in-out', style({ opacity: '1', transform: 'translateY(0%)' })) // last position 0 Y
     ]),
     transition(':leave', [
-      style({ opacity: '1', transform: 'translateY(0%)' }), // from where
-      animate('1s ease-in-out', style({ opacity: '0.7', transform: 'translateY(100%)' }))
+      style({ opacity: '0.5', transform: 'translateY(0%)' }), // from where
+      animate('1s ease-in-out', style({ opacity: '0.2', transform: 'translateY(100%)' }))
     ])]);
 }
+

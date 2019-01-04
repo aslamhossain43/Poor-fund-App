@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import {HostListener, Directive, HostBinding} from '@angular/core';
 import { AngularFireAuth} from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { moveIn, fallIn } from '../router.animations';
+import { fallIn, fromTop } from '../router.animations';
 
 @Component({
   selector: 'app-email',
   templateUrl: './email.component.html',
   styleUrls: ['./email.component.scss'],
-  animations: [moveIn(), fallIn()]
+  animations: [fromTop() , fallIn()]
 
 })
 export class EmailComponent implements OnInit {
@@ -23,7 +23,7 @@ export class EmailComponent implements OnInit {
   });
 }
 // TO BIND EXPORTED ANIMATION FUNCTION
-@HostBinding('@moveIn')
+ @HostBinding('@fromTop')
 
 onSubmit(formData) {
   if (formData.valid) {

@@ -3,8 +3,6 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ConsumersComponent } from './consumers/consumers.component';
-import { ContactComponent } from './contact/contact.component';
-import { ManageComponent } from './manage/manage.component';
 import { NavComponent } from './nav/nav.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
@@ -73,8 +71,6 @@ import { StaffDirectoryService } from './staff-directory/staff-directory.service
     AppComponent,
     HomeComponent,
     ConsumersComponent,
-    ContactComponent,
-    ManageComponent,
     NavComponent,
     LoginComponent,
     SignupComponent,
