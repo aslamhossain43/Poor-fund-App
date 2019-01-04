@@ -68,6 +68,8 @@ import { MainPurposeComponent } from './main-purpose/main-purpose.component';
 import { StaffDirectoryComponent } from './staff-directory/staff-directory.component';
 import { DevelopersComponent } from './developers/developers.component';
 import { HistoryOfBangladeshComponent } from './history-of-bangladesh/history-of-bangladesh.component';
+import { ManageStaffService } from './manage-staff/manage-staff.service';
+import { StaffDirectoryService } from './staff-directory/staff-directory.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -129,7 +131,8 @@ import { HistoryOfBangladeshComponent } from './history-of-bangladesh/history-of
   , ManageGrantedService, GrantedListService, NotGrantedListService, ManageNotGrantedListService,
 DonorService, TotalDonorService, LastYaerTotalDonorService, CurrentYaerTotalDonorService,
 LastYearGrantedListService, CurrentYearGrantedListService, LastYearNotGrantedListService
-, CurrentYearNotGrantedListService, ManageCandidatesService, ManageDonorService,
+, CurrentYearNotGrantedListService, ManageCandidatesService, ManageDonorService, ManageStaffService,
+StaffDirectoryService,
 // For Modal
 BsModalService],
   bootstrap: [AppComponent]
