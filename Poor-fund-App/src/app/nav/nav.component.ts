@@ -7,7 +7,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit {
-ADMIN = 'aslamecehstu043@gmail.com';
+uidDataBase = '1lF136L2aegcwAE2LLbJwPZvH2S2';
+uid: string;
   authenticatedName: any;
   photoUrl: string;
   constructor(public af: AngularFireAuth, private router: Router) {
@@ -18,6 +19,7 @@ ADMIN = 'aslamecehstu043@gmail.com';
         this.authenticatedName = auth.displayName;
       }
       this.photoUrl = auth.photoURL;
+      this.uid = auth.uid;
     });
 
   }
